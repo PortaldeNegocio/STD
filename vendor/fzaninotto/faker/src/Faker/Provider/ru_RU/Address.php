@@ -2,7 +2,7 @@
 
 namespace Faker\Provider\ru_RU;
 
-class Address extends \Faker\Provider\Address
+class Address extends \Faker\Provider\Base
 {
     protected static $cityPrefix = array('город');
 
@@ -41,7 +41,7 @@ class Address extends \Faker\Provider\Address
         'Малайзия', 'Мали', 'Мальдивы', 'Мальта', 'Марокко',
         'Мартиник', 'Маршалловы Острова', 'Мексика', 'Мелкие отдаленные острова США', 'Мозамбик',
         'Молдова', 'Монако', 'Монголия', 'Монтсеррат', 'Мьянма',
-        'Намибия', 'Науру', 'Непал', 'Нигер', 'Нигерия',
+        'Намибия', 'Науру', 'Непал', 'Нигерия', 'Нигерия',
         'Нидерландские Антильские острова', 'Нидерланды', 'Никарагуа', 'Ниуэ', 'Новая Зеландия',
         'Новая Каледония', 'Норвегия', 'Объединённые Арабские Эмираты', 'О. Гернси', 'Оман',
         'Острова Зеленого Мыса', 'Острова Кука', 'Острова Теркс И Кайкос', 'Острова Уоллис и Футуна', 'Острова Херд и Макдональд',
@@ -98,10 +98,6 @@ class Address extends \Faker\Provider\Address
         "{{postcode}}, {{region}} {{regionSuffix}}, {{cityPrefix}} {{city}}, {{streetPrefix}} {{street}}, {{buildingNumber}}",
     );
 
-    protected static $streetAddressFormats = array(
-        "{{streetPrefix}} {{street}}, {{buildingNumber}}"
-    );
-
     public static function buildingNumber()
     {
         return static::numerify(static::randomElement(static::$buildingNumber));
@@ -139,7 +135,7 @@ class Address extends \Faker\Provider\Address
         return static::randomElement(static::$cityPrefix);
     }
 
-    public function city()
+    public static function city()
     {
         return static::randomElement(static::$city);
     }

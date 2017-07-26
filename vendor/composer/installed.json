@@ -2438,56 +2438,6 @@
         "homepage": "http://laravelcollective.com"
     },
     {
-        "name": "fzaninotto/faker",
-        "version": "v1.6.0",
-        "version_normalized": "1.6.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fzaninotto/Faker.git",
-            "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/44f9a286a04b80c76a4e5fb7aad8bb539b920123",
-            "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.3.3|^7.0"
-        },
-        "require-dev": {
-            "ext-intl": "*",
-            "phpunit/phpunit": "~4.0",
-            "squizlabs/php_codesniffer": "~1.5"
-        },
-        "time": "2016-04-29T12:21:54+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": []
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Faker\\": "src/Faker/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "François Zaninotto"
-            }
-        ],
-        "description": "Faker is a PHP library that generates fake data for you.",
-        "keywords": [
-            "data",
-            "faker",
-            "fixtures"
-        ]
-    },
-    {
         "name": "hamcrest/hamcrest-php",
         "version": "v1.2.2",
         "version_normalized": "1.2.2.0",
@@ -2540,12 +2490,12 @@
         "version_normalized": "0.9.8.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/padraic/mockery.git",
+            "url": "https://github.com/mockery/mockery.git",
             "reference": "1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/padraic/mockery/zipball/1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855",
+            "url": "https://api.github.com/repos/mockery/mockery/zipball/1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855",
             "reference": "1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855",
             "shasum": ""
         },
@@ -3957,6 +3907,104 @@
             "phpunit",
             "testing",
             "xunit"
+        ]
+    },
+    {
+        "name": "fzaninotto/faker",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fzaninotto/Faker.git",
+            "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/010c7efedd88bf31141a02719f51fb44c732d5a0",
+            "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "squizlabs/php_codesniffer": "~1.5"
+        },
+        "time": "2014-06-04T14:43:02+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": []
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Faker": "src/",
+                "Faker\\PHPUnit": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "François Zaninotto"
+            }
+        ],
+        "description": "Faker is a PHP library that generates fake data for you.",
+        "keywords": [
+            "data",
+            "faker",
+            "fixtures"
+        ]
+    },
+    {
+        "name": "laracasts/presenter",
+        "version": "0.2.1",
+        "version_normalized": "0.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laracasts/Presenter.git",
+            "reference": "b284f3137f990efd6e95df49d254f1ccc4541e92"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laracasts/Presenter/zipball/b284f3137f990efd6e95df49d254f1ccc4541e92",
+            "reference": "b284f3137f990efd6e95df49d254f1ccc4541e92",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9",
+            "phpspec/phpspec": "~2.0"
+        },
+        "time": "2014-09-13T13:18:07+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Laracasts\\Presenter": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
+            }
+        ],
+        "description": "Simple view presenters",
+        "keywords": [
+            "laravel",
+            "presenter",
+            "view"
         ]
     }
 ]

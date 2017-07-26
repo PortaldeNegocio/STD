@@ -9,7 +9,10 @@ return array(
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
+    'Laracasts\\Presenter' => array($vendorDir . '/laracasts/presenter/src'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
+    'Faker\\PHPUnit' => array($vendorDir . '/fzaninotto/faker/test'),
+    'Faker' => array($vendorDir . '/fzaninotto/faker/src'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
 );
