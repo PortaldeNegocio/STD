@@ -15,6 +15,12 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('TipoDocumento', ['Cedula', 'RUC', 'Pasaporte'])->default('Cedula');
+            $table->string('NumeroDocumento', 15);
+            $table->string('Nombre', 50);
+            $table->string('Apellido', 50);
+            $table->boolean('Activo')->default('true');
+                        
             $table->timestamps();
         });
     }

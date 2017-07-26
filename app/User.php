@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace STD;
 
-use App\Http\AuthTraits\OwnsRecord;
-use App\Traits\HasModelTrait;
+use STD\Http\AuthTraits\OwnsRecord;
+use STD\Traits\HasModelTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\UserRequest;
+use STD\Http\Requests\UserRequest;
 
 class User extends Authenticatable
 {
@@ -76,20 +76,20 @@ class User extends Authenticatable
     public function widgets()
     {
 
-        return $this->hasMany('App\Widget');
+        return $this->hasMany('STD\Widget');
     }
 
     public function socialProviders()
     {
 
-        return $this->hasMany('App\SocialProvider');
+        return $this->hasMany('STD\SocialProvider');
 
     }
 
     public function profile()
     {
 
-        return $this->hasOne('App\Profile');
+        return $this->hasOne('STD\Profile');
     }
 
     public function messages()

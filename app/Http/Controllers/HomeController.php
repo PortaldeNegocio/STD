@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace STD\Http\Controllers;
 
-use App\Exceptions\AlreadySyncedException;
-use App\Exceptions\ConnectionNotAcceptedException;
-use App\Exceptions\CredentialsDoNotMatchException;
-use App\Exceptions\EmailAlreadyInSystemException;
-use App\Exceptions\EmailNotProvidedException;
-use App\Exceptions\NoActiveAccountException;
-use App\Exceptions\TransactionFailedException;
-use App\Exceptions\UnauthorizedException;
+use STD\Exceptions\AlreadySyncedException;
+use STD\Exceptions\ConnectionNotAcceptedException;
+use STD\Exceptions\CredentialsDoNotMatchException;
+use STD\Exceptions\EmailAlreadyInSystemException;
+use STD\Exceptions\EmailNotProvidedException;
+use STD\Exceptions\NoActiveAccountException;
+use STD\Exceptions\TransactionFailedException;
+use STD\Exceptions\UnauthorizedException;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

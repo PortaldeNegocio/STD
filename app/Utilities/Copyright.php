@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Utilities;
+namespace STD\Utilities;
 
 class Copyright
 {

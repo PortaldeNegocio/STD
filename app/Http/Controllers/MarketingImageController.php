@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace STD\Http\Controllers;
 
-use App\Traits\ManagesImages;
-use App\Http\Requests\CreateImageRequest;
-use App\MarketingImage;
-use App\Http\Requests\EditImageRequest;
+use STD\Traits\ManagesImages;
+use STD\Http\Requests\CreateImageRequest;
+use STD\MarketingImage;
+use STD\Http\Requests\EditImageRequest;
 
 class MarketingImageController extends Controller
 {

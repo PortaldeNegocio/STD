@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace STD\Http\Controllers;
 
-use App\Events\RegistrationCompleted;
-use App\Exceptions\EmailNotProvidedException;
-use App\Utilities\SomethingNew;
+use STD\Events\RegistrationCompleted;
+use STD\Exceptions\EmailNotProvidedException;
+use STD\Utilities\SomethingNew;
 use Illuminate\Http\Request;
-use App\Widget;
-use App\User;
-use Facades\App\Utilities\RocketShip;
+use STD\Widget;
+use STD\User;
+use Facades\STD\Utilities\RocketShip;
 
 class TestController extends Controller
 {

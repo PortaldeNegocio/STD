@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\AuthTraits\Social;
+namespace STD\Http\AuthTraits\Social;
 
 trait SetsAuthUser
 {
     /**
      * @param $socialUser
      * @return User
-     * @throws \App\Exceptions\CredentialsDoNotMatchException
-     * @throws \App\Exceptions\EmailAlreadyInSystemException
+     * @throws \STD\Exceptions\CredentialsDoNotMatchException
+     * @throws \STD\Exceptions\EmailAlreadyInSystemException
      */
 
     private function setAuthUser($socialUser)

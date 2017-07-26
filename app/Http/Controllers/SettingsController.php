@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace STD\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use STD\User;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace STD\Http\Controllers;
 
-use App\Http\AuthTraits\OwnsRecord;
+use STD\Http\AuthTraits\OwnsRecord;
 use Illuminate\Http\Request;
-use App\Profile;
-use App\User;
+use STD\Profile;
+use STD\User;
 use Redirect;
 use Illuminate\Support\Facades\Auth;
 use DB;
-use App\Exceptions\UnauthorizedException;
+use STD\Exceptions\UnauthorizedException;
 
 class ProfileController extends Controller
 {

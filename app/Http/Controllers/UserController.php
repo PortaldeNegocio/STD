@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace STD\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
+use STD\Http\Requests\UserRequest;
 use DB;
-use App\User;
+use STD\User;
 use Redirect;
 class UserController extends Controller
 {

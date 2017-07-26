@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\AuthTraits\Social;
+namespace STD\Http\AuthTraits\Social;
 
-use App\Exceptions\EmailNotProvidedException;
+use STD\Exceptions\EmailNotProvidedException;
 use Redirect;
 use Socialite;
 

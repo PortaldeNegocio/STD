@@ -9,6 +9,7 @@ return array(
     'AddImageWeightToMarketingImagesTable' => $baseDir . '/database/migrations/2017_01_28_204332_add_image_weight_to_marketing_images_table.php',
     'AddIsAdminAndStatusIdColumnsToUsersTable' => $baseDir . '/database/migrations/2017_01_26_211544_add_is_admin_and_status_id_columns_to_users_table.php',
     'AddIsSubscribedToUsersTable' => $baseDir . '/database/migrations/2017_01_26_233834_add_is_subscribed_to_users_table.php',
+    'ClientesTableSeeder' => $baseDir . '/database/seeds/ClientesTableSeeder.php',
     'CreateAbonosTable' => $baseDir . '/database/migrations/2017_07_26_201938_create_abonos_table.php',
     'CreateBitacoraCamposTable' => $baseDir . '/database/migrations/2017_07_26_201950_create_bitacora_campos_table.php',
     'CreateBitacoraLaboratoriosTable' => $baseDir . '/database/migrations/2017_07_26_202001_create_bitacora_laboratorios_table.php',

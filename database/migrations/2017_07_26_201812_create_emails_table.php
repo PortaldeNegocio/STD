@@ -15,7 +15,11 @@ class CreateEmailsTable extends Migration
     {
         Schema::create('emails', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->enum('TipoEmail', ['Personal', 'Trabajo'])->default('Personal');
+            $table->string('Email', 60);
+            $table->integer('ClienteId')->unsigned();
+            $table->foreign('ClienteId')->references('id')->on('clientes');            
+            $table->timestamps();     
         });
     }
 

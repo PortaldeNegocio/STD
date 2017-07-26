@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace STD;
 
-use App\Traits\ShowsImages;
+use STD\Traits\ShowsImages;
 use Illuminate\Database\Eloquent\Model;
 
 class MarketingImage extends SuperModel

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace STD\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Queries\GridQueries\GridQuery;
-use App\Queries\GridQueries\WidgetQuery;
-use App\Queries\GridQueries\MarketingImageQuery;
-use App\Queries\GridQueries\UserQuery;
-use App\Queries\GridQueries\ProfileQuery;
+use STD\Queries\GridQueries\GridQuery;
+use STD\Queries\GridQueries\WidgetQuery;
+use STD\Queries\GridQueries\MarketingImageQuery;
+use STD\Queries\GridQueries\UserQuery;
+use STD\Queries\GridQueries\ProfileQuery;
 
 
 class ApiController extends Controller
