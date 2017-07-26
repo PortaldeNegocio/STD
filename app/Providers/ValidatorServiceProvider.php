@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Providers;
+namespace STD\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Subcategory;
-use App\Category;
+use STD\Subcategory;
+use STD\Category;
 
 
 class ValidatorServiceProvider extends ServiceProvider

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Queries\GridQueries\Contracts;
+namespace STD\Queries\GridQueries\Contracts;
 
 interface DataQuery
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace STD\Http\Controllers\Auth;
 
-use App\Events\RegistrationCompleted;
-use App\Exceptions\NoActiveAccountException;
-use App\Http\AuthTraits\Social\ManagesSocialAuth;
+use STD\Events\RegistrationCompleted;
+use STD\Exceptions\NoActiveAccountException;
+use STD\Http\AuthTraits\Social\ManagesSocialAuth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;

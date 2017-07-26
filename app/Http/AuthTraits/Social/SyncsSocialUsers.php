@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\AuthTraits\Social;
+namespace STD\Http\AuthTraits\Social;
 
-use App\Exceptions\AlreadySyncedException;
+use STD\Exceptions\AlreadySyncedException;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests;
-use App\SocialProvider;
-use App\Exceptions\CredentialsDoNotMatchException;
+use STD\Http\Requests;
+use STD\SocialProvider;
+use STD\Exceptions\CredentialsDoNotMatchException;
 
 trait SyncsSocialUsers
 {

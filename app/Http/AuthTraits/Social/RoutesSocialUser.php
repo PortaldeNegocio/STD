@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\AuthTraits\Social;
+namespace STD\Http\AuthTraits\Social;
 
 use Socialite;
 use Illuminate\Support\Facades\Auth;
-use App\Exceptions\ConnectionNotAcceptedException;
+use STD\Exceptions\ConnectionNotAcceptedException;
 
 trait RoutesSocialUser
 {

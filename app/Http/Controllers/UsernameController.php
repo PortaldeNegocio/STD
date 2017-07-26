@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace STD\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Exceptions\UnauthorizedException;
+use STD\Exceptions\UnauthorizedException;
 
 class UsernameController extends Controller
 {

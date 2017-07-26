@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\AuthTraits\Social;
+namespace STD\Http\AuthTraits\Social;
 
-use App\Exceptions\UnauthorizedException;
+use STD\Exceptions\UnauthorizedException;
 use Illuminate\Support\Facades\Auth;
-use App\SocialProvider;
-use App\User;
+use STD\SocialProvider;
+use STD\User;
 
 trait VerifiesSocialUsers
 {

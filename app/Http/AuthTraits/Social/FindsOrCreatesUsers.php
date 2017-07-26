@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\AuthTraits\Social;
+namespace STD\Http\AuthTraits\Social;
 
-use App\User;
-use App\SocialProvider;
-use App\Exceptions\EmailAlreadyInSystemException;
-use App\Exceptions\CredentialsDoNotMatchException;
+use STD\User;
+use STD\SocialProvider;
+use STD\Exceptions\EmailAlreadyInSystemException;
+use STD\Exceptions\CredentialsDoNotMatchException;
 use Illuminate\Support\Facades\DB;
-use App\Exceptions\TransactionFailedException;
-use App\Events\RegistrationCompleted;
+use STD\Exceptions\TransactionFailedException;
+use STD\Events\RegistrationCompleted;
 
 trait FindsOrCreatesUsers
 {

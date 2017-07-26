@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Listeners;
+namespace STD\Listeners;
 
-use App\Events\RegistrationCompleted;
+use STD\Events\RegistrationCompleted;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\RegistrationEmail;
+use STD\Mail\RegistrationEmail;
 
 class SendRegistrationEmail implements ShouldQueue
 {

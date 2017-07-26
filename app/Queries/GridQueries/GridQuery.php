@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Queries\GridQueries;
+namespace STD\Queries\GridQueries;
 
 use Illuminate\Http\Request;
-use App\Queries\GridQueries\Contracts\DataQuery;
+use STD\Queries\GridQueries\Contracts\DataQuery;
 
 class GridQuery
 {

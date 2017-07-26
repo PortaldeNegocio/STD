@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace STD\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Exceptions\UnauthorizedException;
+use STD\Exceptions\UnauthorizedException;
 
 class AllowIfAdmin
 {

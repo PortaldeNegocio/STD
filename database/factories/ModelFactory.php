@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(STD\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -23,7 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Widget::class, function ($faker) {
+$factory->define(STD\Widget::class, function ($faker) {
 
     $name = $faker->unique()->word . ' ' . $faker->unique()->word;
     $slug = str_slug($name, "-");
@@ -35,5 +35,13 @@ $factory->define(App\Widget::class, function ($faker) {
         'user_id' => $user_id,
 
 
+    ];
+});
+
+$factory->define(STD\Cliente::class, function (Faker\Generator $faker) {
+    return [
+		'NumeroDocumento' => $faker->text(15),
+		'Nombre'          => $faker->text(20),
+		'Apellido'        => $faker->text(20),
     ];
 });

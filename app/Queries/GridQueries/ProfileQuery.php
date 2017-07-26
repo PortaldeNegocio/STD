@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Queries\GridQueries;
+namespace STD\Queries\GridQueries;
 
 use DB;
 
-use App\Queries\GridQueries\Contracts\DataQuery;
+use STD\Queries\GridQueries\Contracts\DataQuery;
 
 class ProfileQuery implements DataQuery
 {

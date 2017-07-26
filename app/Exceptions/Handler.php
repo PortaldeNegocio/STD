@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Exceptions;
+namespace STD\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use App\Exceptions\EmailNotProvidedException;
-use App\Exceptions\UnauthorizedException;
-use App\Exceptions\NoActiveAccountException;
-use App\Exceptions\AlreadySyncedException;
-use App\Exceptions\ConnectionNotAcceptedException;
-use App\Exceptions\CredentialsDoNotMatchException;
-use App\Exceptions\EmailAlreadyInSystemException;
-use App\Exceptions\TransactionFailedException;
+use STD\Exceptions\EmailNotProvidedException;
+use STD\Exceptions\UnauthorizedException;
+use STD\Exceptions\NoActiveAccountException;
+use STD\Exceptions\AlreadySyncedException;
+use STD\Exceptions\ConnectionNotAcceptedException;
+use STD\Exceptions\CredentialsDoNotMatchException;
+use STD\Exceptions\EmailAlreadyInSystemException;
+use STD\Exceptions\TransactionFailedException;
 
 class Handler extends ExceptionHandler
 {

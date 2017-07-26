@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace STD\Traits;
 
 use Illuminate\Support\Facades\Config;
 use Intervention\Image\Facades\Image;

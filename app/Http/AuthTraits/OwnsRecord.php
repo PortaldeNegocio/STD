@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\AuthTraits;
+namespace STD\Http\AuthTraits;
 
 use Illuminate\Support\Facades\Auth;
 

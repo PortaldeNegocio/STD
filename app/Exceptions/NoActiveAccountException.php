@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace STD\Exceptions;
 
 class NoActiveAccountException extends \Exception
 {
