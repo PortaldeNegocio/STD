@@ -10,7 +10,7 @@
       page. However, you can choose any other skin. Make sure you
       apply the skin class to the body tag so the changes take effect.
 -->
-<link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css">
+<link rel="stylesheet" href="/dist/css/skins/skin-yellow.min.css">
 
 <!-- Custom Styles -->
-<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
