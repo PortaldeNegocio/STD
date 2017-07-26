@@ -12,6 +12,7 @@ use STD\Exceptions\TransactionFailedException;
 use STD\Exceptions\UnauthorizedException;
 use Illuminate\Http\Request;
 
+
 class HomeController extends Controller
 {
     /**

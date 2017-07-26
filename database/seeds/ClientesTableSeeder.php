@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use STD\Cliente;
 
 class ClientesTableSeeder extends Seeder
 {

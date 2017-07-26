@@ -11,4 +11,5 @@
 
 <!-- Custom Styles -->
 <link rel="stylesheet" href="{{ mix('/css/main.css') }}">
+<link href="https://file.myfontastic.com/SQDf9ukJbhCoTDHarUh4fS/icons.css" rel="stylesheet">
 
