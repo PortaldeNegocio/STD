@@ -36,7 +36,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-yellow fixed sidebar-mini">
 <div id="app">
     <div class="wrapper">
 

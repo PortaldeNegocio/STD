@@ -35,7 +35,12 @@
 
             <section class="content">
 
-                <!-- Your Page Content Here -->
+                <h2 class="contenido">
+                    aqui va el contenido
+                </h2>
+                <h3 class="otro">
+                    otro titulo
+                </h3>
 
             </section>
 
