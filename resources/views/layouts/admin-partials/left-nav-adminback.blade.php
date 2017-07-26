@@ -33,36 +33,41 @@
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-                </a>                
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                    <li><a href="/admin-v2"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                    <li><a href="/home"><i class="fa fa-circle-o"></i> Site Home</a></li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-object-group"></i>
-                    <span> Estudio</span>
+                    <span> Site Pages</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Clientes</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Solicitud</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Orden de Trabajo</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Trabajos de Campos</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Trabajos de Laboratorio</a></li>
+                    <li><a href="/user"><i class="fa fa-circle-o"></i> Users</a></li>
+                    <li><a href="/profile"><i class="fa fa-circle-o"></i> Profiles</a></li>
+                    <li><a href="/marketing-image"><i class="fa fa-circle-o"></i> Marketing Images</a></li>
+                    <li><a href="/widget"><i class="fa fa-circle-o"></i> Widgets</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
-                    <span>Bitacoras</span>
+                    <span>Layout Options</span>
                     <span class="pull-right-container">
               <span class="label label-primary pull-right">4</span>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Bitacora de Laboratorio</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Bitacora de Campo</a></li>
-                    
+                    <li><a href="/top-nav"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+                    <li><a href="/boxed"><i class="fa fa-circle-o"></i> Boxed</a></li>
+                    <li><a href="/fixed"><i class="fa fa-circle-o"></i> Fixed</a></li>
+                    <li><a href="/collapsed-sidebar"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
                 </ul>
             </li>
             <li>
