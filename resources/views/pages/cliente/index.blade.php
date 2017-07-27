@@ -1,5 +1,11 @@
 @extends('layouts.master-auth')
 
+@section('css');
+<script src="{{ asset('/datatables.net-bs/css/dataTables.bootstrap.min.css') }}"></script>
+<script src="{{ asset('/bootstrap/css/bootstrap.min.css') }}"></script>
+
+@endsection;
+
 @section('content')
 
     <!-- content-wrapper -->
@@ -32,68 +38,64 @@
             <section class="content">
 
                 <!-- Your Page Content Here -->
-							<div class="clearfix"></div>
-
-							<table class="table table-hover table-strip gridlist" >
-				                <thead>
-				                    <tr>
-				                        <th>No. Documento</th>
-				                        <th>Nombre</th>
-				                        <th>Apellido</th>
-				                        <th>Acciones</th>
-				                    </tr>
-				                </thead>
-				                <tbody>
-				                    @foreach ($clientes as $item)
-				                        <tr>
-				                            <td>
-				                                {{ $item->NumeroDocumento }}
-				                            </td>
-				                            <td>
-				                                {{ $item->Nombre }}
-				                            </td>
-				                             <td>
-				                                {{ $item->Apellido }}
-				                            </td>
-				                            <td>
-				                                
-												{!! Form::open([
-				                                    'route' => ['desactivarCliente', $item->id],
+				<div class="headgrid">
+					<div class="col-md-10 headgrid__left">						
+					</div>
+					<div class="col-md-2 headgrid__right">
+						<a id="buttonNuevo" class="headgrid__enlace btn-primary" href="{{ route('cliente.create') }}">
+							<span class="icon-plus-square"></span> Nuevo
+						</a>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<table id="example1" class="table table-bordered table-striped">
+	                <thead>
+	                    <tr>
+	                        <th class="sorting_asc">No. Documento</th>
+	                        <th class="sorting">Nombre</th>
+	                        <th>Apellido</th>
+	                        <th>Acciones</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    @foreach ($clientes as $item)
+	                        <tr>
+	                            <td> {{ $item->NumeroDocumento }} </td>
+	                            <td> {{ $item->Nombre }} </td>
+				                <td> {{ $item->Apellido }} </td>
+				                <td style="display: inline-block;">
+									{!! Form::open([
+				                                    'route' => ['destroyByAjax', $item->id],
 				                                    'method' => 'DELETE',
 				                                    'class' => 'formaccion'			            
-				                                ]) !!}
+					                                ]) !!}
 
-				                                  <a href="#" class="btn-show">
-													<span class="icon-eye"></span>
-												</a>
-				                                {!! Form::close() !!}
-
-
+				        	            <a href="#" class="btn-show" >
+											<span class="icon-eye"></span>
+										</a>
+				                    {!! Form::close() !!}
 											
-				                                  <a href="{{ route('cliente.edit',$item->id) }}" class="btn-edit">
-													<span class="icon-pencil"></span>
-												</a>
+				                    <a href="{{ route('cliente.edit',$item->id) }}" class="btn-edit">
+										<span class="icon-pencil"></span>
+									</a>
 				                                
-												              <button class="btn btn-warning btn-detail open_modal" value="{{$item->id}}">Edit</button>
-
-
-
-				                                {!! Form::open([
-				                                    'route' => ['desactivarCliente', $item->id],
+				                    {!! Form::open([
+				                    	            'route' => ['destroyByAjax', $item->id],
 				                                    'method' => 'DELETE',
 				                                    'class' => 'formaccion'			            
 				                                ]) !!}
 
-				                                  <a href="#" class="btn-delete">
-													<span class="icon-trash-o"></span>
-												</a>
-				                                {!! Form::close() !!}
-				                            </td>
-				                        </tr>
-				                    @endforeach
-				                </tbody>
-				            </table>
-				            {!! $clientes->render() !!}
+				                        <a href="#" class="btn-delete">
+											<span class="icon-trash-o"></span>
+										</a>
+				                    {!! Form::close() !!}
+				                    
+				                </td>
+			                </tr>
+			            @endforeach
+				    </tbody>
+				</table>
+				{!! $clientes->render() !!}
 
             </section>
 
@@ -108,5 +110,15 @@
     <!-- end content-wrapper -->
 
 @endsection
+
+@section('scripts')
+<script src="{{ asset('/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/js/Cliente/features.js') }}"></script>
+<script src="{{ asset('/js/Cliente/crud.js') }}"></script>
+
+<script src="{{ asset('/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
+ @endsection
 
 

@@ -13,8 +13,12 @@ class CreateTelefonosTable extends Migration
      */
     public function up()
     {
-        Schema::create('telefonos', function (Blueprint $table) {
+       Schema::create('telefonos', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('TipoTelefono', ['Personal', 'Domicilio', 'Trabajo', 'Emergencia'])->default('Personal');
+            $table->string('Numero', 10);
+            $table->integer('cliente_id')->unsigned();                
+            $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->timestamps();
         });
     }

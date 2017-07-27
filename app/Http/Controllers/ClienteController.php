@@ -17,12 +17,13 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index( Request $request)
     {
-        $clientes = Cliente::orderBy('id', 'DESC')->paginate(5);
-        if($request -> ajax()){
-            return response()->json(view('pages.cliente._table', compact('clientes'))->render());            
-        }
+        $clientes = Cliente::orderBy('id', 'DESC')->paginate(500);
+         
+         //if($request -> ajax()){
+          //  return response()->json(view('pages.cliente._table', compact('clientes'))->render());            
+       // }
         return view('pages.cliente.index', compact('clientes'));
     }
 
@@ -35,10 +36,10 @@ class ClienteController extends Controller
     {
         $cliente = new Cliente;
         if($request -> ajax()){
-            return response()->json(view('cliente.create', compact('cliente'))->render());            
+            return response()->json(view('pages.cliente.create', compact('cliente'))->render());            
         }
         
-        return view('cliente.create', compact('cliente'));
+        return view('pages.cliente.create', compact('cliente'));
     }
 
     /**
@@ -48,34 +49,26 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // if($request-> ajax()){
+    { 
+        $cliente = new Cliente;      
+        $cliente->TipoDocumento = $request->TipoDocumento;
+        $cliente->NumeroDocumento = $request->NumeroDocumento;
+        $cliente->Nombre = $request->Nombre;
+        $cliente->Apellido = $request->Apellido;
+        $cliente->save();
 
- //$cliente = new Cliente($request->all());              
-          //  console.log($cliente);  
-            $cliente = new Cliente;      
-            $cliente->TipoDocumento = $request->TipoDocumento;
-            $cliente->NumeroDocumento = $request->NumeroDocumento;
-            $cliente->Nombre = $request->Nombre;
-            $cliente->Apellido = $request->Apellido;
-            $cliente->save();
-
-            foreach ($request->Telefonos as $fono) {
-                $newTelefono = new Telefono;
-                $newTelefono->TipoTelefono = $fono['tipo'];
-                $newTelefono->Numero = $fono['dato'];
-                $newTelefono->cliente_id = $cliente->id;
-                $newTelefono->save();
-                // $cliente->telefonos()->save($newTelefono);
-           };
-
-return response()->json([
-                'message' => $request->Telefonos
-                ]);
-
-       //  }
-
+        foreach (json_decode($request->StrTelefonos, true) as $fono) {
+            $newTelefono = new Telefono;
+            $newTelefono->TipoTelefono = $fono['tipo'];
+            $newTelefono->Numero = $fono['dato'];
+            $newTelefono->cliente_id = $cliente->id;
+            $newTelefono->save();
+            // $cliente->telefonos()->save($newTelefono);
+       };
+       // return response()->json(['message' => $request->Telefonos]);
+        return redirect('cliente');
     }
+
     /**
      * Display the specified resource.
      *
@@ -98,7 +91,7 @@ return response()->json([
     public function edit($id)
     {
         $cliente = Cliente::find($id);
-        return view('cliente.edit', compact('cliente'));
+        return view('pages.cliente.edit', compact('cliente'));
     }
 
     /**
@@ -118,8 +111,39 @@ return response()->json([
         $cliente->Apellido = $request->Apellido;
 
         $cliente->save();
-         return response()->json($cliente);
-       // return redirect()->route('cliente.index')->with('info', 'El producto fue eliminado') ;
+
+        if(!is_null($request->StrTelefonos)){
+            foreach (json_decode($request->StrTelefonos, true) as $fono) {
+
+                if(is_null($fono['id']) || ($fono['id'])=="undefined" ){
+                    
+                   // dd("is null id true "+$fono['id']);
+                    
+                    if($fono['deleted']=='false'){
+                        $newTelefono = new Telefono;
+                        $newTelefono->TipoTelefono = $fono['tipo'];
+                        $newTelefono->Numero = $fono['dato'];
+                        $newTelefono->cliente_id = $cliente->id;
+                        $newTelefono->save();
+                    };
+                }else{
+                  //dd("else is null id true ");
+                    
+                    $telefono = Telefono::find($fono['id']);
+                    if(($fono['deleted'])=='true'){
+                    
+                         $telefono->delete();
+                    }else{
+                        $telefono->TipoTelefono = $fono['tipo'];
+                        $telefono->Numero = $fono['dato'];
+                        $telefono->save();
+                    };
+                };
+            };
+        };
+
+       //  return response()->json($cliente);
+        return redirect()->route('cliente.index')->with('info', 'El producto fue eliminado') ;
 
     }
 
@@ -134,7 +158,7 @@ return response()->json([
         //
     }
 
-    public function desactivarCliente(Request $request, $id)
+    public function destroyByAjax(Request $request, $id)
     {
         if($request -> ajax()){
             $cliente = Cliente::find($id);

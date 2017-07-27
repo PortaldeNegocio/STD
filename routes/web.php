@@ -13,7 +13,7 @@
 // Cliente page route
 Route::resource('cliente', 'ClienteController');
 
-Route::delete('/desactivar-cliente/{id}', 'ClienteController@desactivarCliente')->name('desactivarCliente');
+Route::delete('/destroyByAjax/{id}', 'ClienteController@destroyByAjax')->name('destroyByAjax');
 // Home page route
 
 Route::get('/', 'PagesController@index')->name('index');
