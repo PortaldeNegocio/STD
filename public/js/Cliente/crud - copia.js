@@ -1,22 +1,3 @@
-$(document).on('click','.headgrid__enlace', function(e){
-	e.preventDefault();
-	var page = $(this).attr('href');
-	
-//	alert(page);
-
-	$.ajax({
-		url:page,
-		type: 'GET',
-		dataType: 'json',
-		data: {},
-		success: function(data){
-		//console.log(data);
-
-			$(".clientes").html(data);
-
-		}
-	});
-});
 
 //Open Modal
   $(document).on('click','.open_modal',function(){
@@ -62,22 +43,6 @@ $(document).on('click','.headgrid__enlace', function(e){
 	});
 
 
-//GET ALL PHONES
-function getAllPhone(){
-	var json ="", jsonRow ="";
-	$("#tableTelefono tr").each(function(){
-		json+=",{"
-   		$(this).find("td").each(function () {
-    		$this=$(this);
-      		jsonRow+=',"'+$this.attr("class")+'":"'+$this.html()+'"';
-   		});
-		json+= jsonRow.substr(1)+"}";
-	});
-   obj= JSON.parse('['+json.substr(1)+']');
-	return obj;
-};
-
-
 //CREATE CON AJAX
 $('.btn-guardar').click(function(e){
 		e.preventDefault();
@@ -94,28 +59,22 @@ $('.btn-guardar').click(function(e){
 			Apellido: $('#Apellido').val(),
 			Telefonos: getAllPhone(),
         };
-
-		// console.log(formData);
-	$.ajax({
-		url: route,
-		headers: { 'X-CSRF-TOKEN': token},		
-		type: 'POST',
-		dataType: 'json',
-		 data: formData,
-        success: function(data) {
-                console.log("");
-            }
-	});
+		$.ajax({
+			url: route,
+			headers: { 'X-CSRF-TOKEN': token},		
+			type: 'POST',
+			dataType: 'json',
+			 data: formData,
+	        success: function(data) {
+	                console.log("");
+	            }
+		});
 
 	});
 
 //UPDATE CON AJAX
 $('#actualizar').click(function(e){
 		e.preventDefault();
-
-/*		var row = $(this).parents('tr');
-		var form = $(this).parents('form');
-		var route = form.attr('action');*/
 		var token = $("#token").val();
 		var clienteId = $("#id").val();
 
@@ -130,26 +89,26 @@ $('#actualizar').click(function(e){
         };
 
       
- console.log(route);
-	//	alert(token);
-		 console.log(formData);
+		 console.log(route);
+			//	alert(token);
+				 console.log(formData);
 
-		 console.log(token);
-		  console.log(route);
-	$.ajax({
-		url: route,
-		headers: { 'X-CSRF-TOKEN': token},		
-		type: 'PUT',
-		dataType: 'json',
-		 data: formData,
-        success: function(data) {
-                 console.log(data);
-                   $('#myModal').modal('hide')
-            },
-            error: function (data) {
-                console.log('Error:', data);
-            }
-	});
+				 console.log(token);
+				  console.log(route);
+			$.ajax({
+				url: route,
+				headers: { 'X-CSRF-TOKEN': token},		
+				type: 'PUT',
+				dataType: 'json',
+				 data: formData,
+		        success: function(data) {
+		                 console.log(data);
+		                   $('#myModal').modal('hide')
+		            },
+		            error: function (data) {
+		                console.log('Error:', data);
+		            }
+			});
 
 });
 

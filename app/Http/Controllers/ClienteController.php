@@ -21,9 +21,9 @@ class ClienteController extends Controller
     {
         $clientes = Cliente::orderBy('id', 'DESC')->paginate(500);
          
-         //if($request -> ajax()){
-          //  return response()->json(view('pages.cliente._table', compact('clientes'))->render());            
-       // }
+        if($request -> ajax()){
+            return response()->json(view('pages.cliente._table', compact('clientes'))->render());            
+        }
         return view('pages.cliente.index', compact('clientes'));
     }
 
@@ -32,14 +32,12 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {
+    public function create(Request $request){
         $cliente = new Cliente;
         if($request -> ajax()){
-            return response()->json(view('pages.cliente.create', compact('cliente'))->render());            
-        }
+            return response()->json(view('pages.cliente._form', compact('cliente'))->render());}
         
-        return view('pages.cliente.create', compact('cliente'));
+        return view('pages.cliente.show', compact('cliente'));
     }
 
     /**
@@ -48,8 +46,7 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    { 
+    public function store(Request $request){ 
         $cliente = new Cliente;      
         $cliente->TipoDocumento = $request->TipoDocumento;
         $cliente->NumeroDocumento = $request->NumeroDocumento;
@@ -57,14 +54,22 @@ class ClienteController extends Controller
         $cliente->Apellido = $request->Apellido;
         $cliente->save();
 
-        foreach (json_decode($request->StrTelefonos, true) as $fono) {
-            $newTelefono = new Telefono;
-            $newTelefono->TipoTelefono = $fono['tipo'];
-            $newTelefono->Numero = $fono['dato'];
-            $newTelefono->cliente_id = $cliente->id;
-            $newTelefono->save();
-            // $cliente->telefonos()->save($newTelefono);
-       };
+        if(!is_null($request->StrTelefonos)){
+            foreach (json_decode($request->StrTelefonos, true) as $fono) {
+
+                if(is_null($fono['id']) || ($fono['id'])=="undefined" ){
+                    
+                    if($fono['deleted']=='false'){
+                        $newTelefono = new Telefono;
+                        $newTelefono->TipoTelefono = $fono['tipo'];
+                        $newTelefono->Numero = $fono['dato'];
+                        $newTelefono->cliente_id = $cliente->id;
+                        $newTelefono->save();
+                    };
+                };
+            };
+        };
+
        // return response()->json(['message' => $request->Telefonos]);
         return redirect('cliente');
     }
@@ -88,10 +93,13 @@ class ClienteController extends Controller
      * @param  \STD\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit(Request $request, $id){
         $cliente = Cliente::find($id);
-        return view('pages.cliente.edit', compact('cliente'));
+        if($request -> ajax()){
+            return response()->json(view('pages.cliente._form', compact('cliente'))->render());
+        }
+      
+        return view('pages.cliente.show', compact('cliente'));
     }
 
     /**
@@ -101,8 +109,7 @@ class ClienteController extends Controller
      * @param  \STD\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $cliente = Cliente::find($id);
         
         $cliente->TipoDocumento = $request->TipoDocumento;
@@ -143,8 +150,7 @@ class ClienteController extends Controller
         };
 
        //  return response()->json($cliente);
-        return redirect()->route('cliente.index')->with('info', 'El producto fue eliminado') ;
-
+        return redirect()->route('cliente.index')->with('info', 'El cliente fue actualizado') ;
     }
 
     /**
@@ -162,6 +168,11 @@ class ClienteController extends Controller
     {
         if($request -> ajax()){
             $cliente = Cliente::find($id);
+
+            foreach ($cliente->telefonos as $fono) {
+                $fono->delete();
+            };
+
             $cliente->delete();
 
             $totalClientes = Cliente::all()->count();

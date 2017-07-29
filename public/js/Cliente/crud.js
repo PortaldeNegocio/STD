@@ -1,5 +1,6 @@
 //DELETE CON AJAX
-$('.btn-delete').click(function(e){
+
+$(document).on('click','.btn-delete', function(e){
 	e.preventDefault();
 
 	var row = $(this).parents('tr');
@@ -16,3 +17,5 @@ $('.btn-delete').click(function(e){
 		$('#alert').html(result.message);
 	})
 });
+
+
