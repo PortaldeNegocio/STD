@@ -5,19 +5,19 @@
     <section class="content-header">
     	@if( $cliente->exists )
 	        <h1>Modificar Clientes
-                <small>formulario para modificar un cliente</small>
+                <small>Formulario para modificar un cliente</small>
 	        </h1>
 	        <ol class="breadcrumb">
-	            <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-	            <li class="active">User Dashboard</li>
+	            <li><a href="{{ route('cliente.index') }}"><i class="fa fa-dashboard"></i>Cliente</a></li>
+	            <li class="active">Editar Cliente</li>
 	        </ol>
 	    @else
-			<h1>Nuevo Clientes
-	            <small>formulario para ingresar nuevo cliente</small>
+			<h1>Nuevo Cliente
+	            <small>Formulario para ingresar nuevo cliente</small>
 	        </h1>
 	        <ol class="breadcrumb">
-	            <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-	            <li class="active">User Dashboard</li>
+	            <li><a href="{{ route('cliente.index') }}"><i class="fa fa-dashboard"></i>Cliente</a></li>
+	            <li class="active">Crear Cliente</li>
 	        </ol>
 	    @endif
     </section>
@@ -26,7 +26,7 @@
     <!-- content -->
     <section class="content">
         
-        <div class="col-xs-offset-0 col-xs-9">  			
+        <div class="col-xs-offset-3 col-xs-6">  			
 		
 			@if( $cliente->exists )
 			{{-- Se actualiza si el cliente existe --}}	
@@ -134,10 +134,10 @@
 
 
 				<a href="#" id="agregarTelefono" >
-					<span id="labelAgregarTelefono" class="icon-trash-o btn btn-default", style="width: 15%" >Agregar</span>
+					<span id="labelAgregarTelefono" class="icon-trash-o btn btn-default", style="width: 18%" >Agregar</span>
 				</a>
 				<a href="#" id="eliminarTelefono" >
-					<span id="labelEliminarTelefono" class="icon-trash-o btn btn-default", style="width: 15%">Eliminar</span>
+					<span id="labelEliminarTelefono" class="icon-trash-o btn btn-default", style="width: 18%">Eliminar</span>
 				</a>
 			</div>
 			<div class="form-group">      

@@ -16,7 +16,7 @@
                 
                 <h1>
                     Modificar Clientes
-                    <small>formulario para modificar un cliente</small>
+                    <small>Formulario para modificar un cliente</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
@@ -33,7 +33,7 @@
 
                 <!-- Your Page Content Here -->
 		
-	  	    	<div class="col-xs-offset-0 col-xs-9">  			
+	  	    	<div class="col-xs-offset-1 col-xs-10">  			
     		      	@include('pages.cliente._form', ['cliente' => $cliente])
     		    </div>
 

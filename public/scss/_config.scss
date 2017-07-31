@@ -1,0 +1,95 @@
+
+//Convertir px a em
+@function em($ele, $parent:16px){
+	@return ($ele / $parent) * 1em;
+}
+
+//Convertir px a rem
+@function rem($ele){
+	@return ($ele / 16px) * 1rem;
+}
+
+//Tamaño de títulos
+$h3-size: em(26px);
+$h2-size: em(30px);
+$h1-size: em(40px);
+
+//colores usados
+$colors: (
+	primario: #00CA67,
+	segundo: #0E6185,
+	tercero: #242424,
+	
+    negro: #000000,
+    negro-claro: #212121,
+    oscuro: #363842,
+	
+	gris-claro: #e6e6e6,
+	gris-medio: #bcbcbc,
+	gris-oscuro: #757575,
+    
+    color-fondo: #FBFBFB,
+    	
+	blanco: #ffffff
+);
+
+//funcion parar obtener el color
+@function color($color){
+	@return map-get($colors, $color);
+}
+
+//colores de redes sociales
+$socials: (
+	facebook: #3b5998,
+	twitter: #55acee,
+	instagram: #e95950,
+	google: #dd4b39,
+	pinterest: #cb2027,
+	youtube: #bb0000,
+	linkedin: #007bb5
+);
+
+//funcion parar obtener el color de redes sociales
+@function colorSocial($color){
+	@return map-get($socials, $color);
+}
+
+//Centrar imagen de fondo
+@mixin imgCenter(){
+	background-size: cover;
+	background-position: center 0;
+}
+
+//ruta de las imagenes
+$path: 'img/';
+
+@function imgRuta($img){
+	@return url($path + $img);
+}
+
+@mixin imgParallax($img){
+	background: imgRuta($img) no-repeat;
+	background-position: center 0;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+@mixin imgFondo($img){
+	background: imgRuta($img) no-repeat;
+	background-position: center 0;
+	background-size: cover;	
+}
+
+
+@mixin leerMas($fondo){
+	display: inline-block;
+	padding: 10px 15px;
+	background-color: $fondo;
+	color: white;
+	cursor: pointer;
+
+	&:hover{
+		background: darken($fondo, 8);
+		color: white;
+	}
+}

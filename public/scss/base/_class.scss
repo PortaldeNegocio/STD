@@ -1,0 +1,155 @@
+.gutter{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.alto, .row, .container, .container-fluid{
+	height: 100%;
+}
+
+.container, .container-fluid{
+	width: 100%;
+}
+
+.ancho-full{
+	width: 100%;
+	max-width: 1400px;
+	padding: 0px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.oculto{
+	display: none;
+}
+
+.primario{
+	background: color(primario);
+}
+
+.segundo{
+	background: color(segundo);
+}
+
+.tercero{
+	background: color(tercero);
+}
+
+.color-primario{
+	color: color(primario);
+}
+
+.color-segundo{
+	color: color(segundo);
+}
+
+.color-tercero{
+	color: color(tercero);
+}
+
+.color-blanco{
+	color: white;
+}
+
+.color-negro{
+	color: #212121;
+}
+
+.color-blanco{
+	color: white;
+}
+
+//centrado perfecto con flexbox
+.centrado-flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.parallax{
+	background-position: center 0;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+[class^="icon-"]::before{
+	position: relative;
+	top: 2px;
+	
+}
+
+.sinpadding{
+	padding: 0;
+}
+
+.cuerpo{
+	padding-top: em(60px);
+	background-color: color(color-fondo);
+}
+
+//botones de accion
+.leer-mas{
+	display: inline-block;
+	padding: 10px 15px;
+	background-color: color(primario);
+	color: white;
+	cursor: pointer;
+	border-radius: 5px;
+
+	&:hover{
+		background: darken(color(primario), 8);
+		color: white;
+	}
+}
+
+
+//estilos para la paginacion
+.pagination{
+	
+	.page-numbers{
+		background: color(primario);
+		color: white;
+		padding: 5px;
+
+		&:hover{
+			background: darken(color(primario), 8);
+		}
+	}
+
+	.current{
+		background: darken(color(primario), 8);
+	}
+}
+
+//estilo para el breadcrumbs
+.breadcrumb{
+	color: color(gris-oscuro);	
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 0;
+
+	a{
+		color: color(primario);
+	}
+}
+
+.facebook{
+	color: colorSocial(facebook);
+	border: 1px solid colorSocial(facebook);
+}
+
+.twitter{
+	color: colorSocial(twitter);
+	border: 1px solid colorSocial(twitter);
+}
+
+.instagram{
+	color: colorSocial(instagram);
+	border: 1px solid colorSocial(instagram);
+}
+
+ul.paginacion{
+	list-style: none;
+}

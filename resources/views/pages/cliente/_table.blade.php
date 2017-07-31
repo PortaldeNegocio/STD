@@ -1,90 +1,84 @@
- <!-- content-wrapper -->
+ <!-- content-wrapper -->    
 
-     <!-- container -->
-    <div class="container">
+    <!-- content-header has breadcrumbs -->
+    <section class="content-header">
+        <h1>
+            Clientes
+            <small>Todos los registros de clientes</small>
+        </h1>
 
-        <!-- content-header has breadcrumbs -->
-        <section class="content-header">
-            <h1>
-                Clientes
-                <small>todos los registros de clientes</small>
-            </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+            <li class="active">Clientes</li>
+        </ol>
 
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                <li class="active">User Dashboard</li>
-            </ol>
+    </section>
+    <!-- end content-header section -->
 
-        </section>
-        <!-- end content-header section -->
+    <!-- content -->
+    <section class="content">
 
-        <!-- content -->
-        <section class="content">
-
-            <!-- Your Page Content Here -->
-			<div class="headgrid">
-				<div class="col-md-10 headgrid__left">						
-				</div>
-				<div class="col-md-2 headgrid__right">
-					<a id="buttonAjaxGet" class="headgrid__enlace btn-primary" href="{{ route('cliente.create') }}">
-						<span class="icon-plus-square"></span> Nuevo
-					</a>
-				</div>
+        <!-- Your Page Content Here -->
+		<div class="headgrid">
+			<div class="pull-right">
+				<a id="buttonAjaxGet" class="headgrid__enlace leer-mas" href="{{ route('cliente.create') }}">
+					<span class="icon-plus-square"></span> Nuevo
+				</a>
 			</div>
-			<div class="clearfix"></div>
-			<table id="dataTableNet" class="table table-bordered table-striped">
-                <thead>
+		</div>
+		<div class="clearfix"></div>
+		<table id="dataTableNet" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="sorting_asc">No. Documento</th>
+                    <th class="sorting">Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($clientes as $item)
                     <tr>
-                        <th class="sorting_asc">No. Documento</th>
-                        <th class="sorting">Nombre</th>
-                        <th>Apellido</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($clientes as $item)
-                        <tr>
-                            <td> {{ $item->NumeroDocumento }} </td>
-                            <td> {{ $item->Nombre }} </td>
-			                <td> {{ $item->Apellido }} </td>
-			                <td style="display: inline-block;">
-								{!! Form::open([
-			                                    'route' => ['destroyByAjax', $item->id],
-			                                    'method' => 'DELETE',
-			                                    'class' => 'formaccion'			            
-				                                ]) !!}
-
-			        	            <a href="#" class="btn-show" >
-										<span class="icon-eye"></span>
-									</a>
-			                    {!! Form::close() !!}
-										
-			                    <a id="buttonAjaxGet" href="{{ route('cliente.edit',$item->id) }}" class="btn-edit">
-									<span class="icon-pencil"></span>
-								</a>
-			                                
-			                    {!! Form::open([
-			                    	            'route' => ['destroyByAjax', $item->id],
-			                                    'method' => 'DELETE',
-			                                    'class' => 'formaccion'			            
+                        <td> {{ $item->NumeroDocumento }} </td>
+                        <td> {{ $item->Nombre }} </td>
+		                <td> {{ $item->Apellido }} </td>
+		                <td>
+							{!! Form::open([
+		                                    'route' => ['destroyByAjax', $item->id],
+		                                    'method' => 'DELETE',
+		                                    'class' => 'formaccion'			            
 			                                ]) !!}
 
-			                        <a href="#" class="btn-delete">
-										<span class="icon-trash-o"></span>
-									</a>
-			                    {!! Form::close() !!}
-			                    
-			                </td>
-		                </tr>
-		            @endforeach
-			    </tbody>
-			</table>
-			{!! $clientes->render() !!}
+		        	            <a href="#" class="btn-show btntabla" >
+									<span class="icon-eye"></span>
+								</a>
+		                    {!! Form::close() !!}
+									
+		                    <a id="buttonAjaxGet" href="{{ route('cliente.edit',$item->id) }}" class="btn-edit btntabla">
+								<span class="icon-pencil"></span>
+							</a>
+		                                
+		                    {!! Form::open([
+		                    	            'route' => ['destroyByAjax', $item->id],
+		                                    'method' => 'DELETE',
+		                                    'class' => 'formaccion'			            
+		                                ]) !!}
 
-        </section>
-        <!-- end content section -->
+		                        <a href="#" class="btn-delete btntabla">
+									<span class="icon-trash-o"></span>
+								</a>
+		                    {!! Form::close() !!}
+		                    
+		                </td>
+	                </tr>
+	            @endforeach
+		    </tbody>
+		</table>
+		{!! $clientes->render() !!}
 
-    </div>
-    <!-- end container -->
+    </section>
+    <!-- end content section -->
+
+    
 
 <!-- end content-wrapper -->
