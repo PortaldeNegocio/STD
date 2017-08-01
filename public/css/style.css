@@ -179,6 +179,14 @@ ul.paginacion {
   list-style: none;
 }
 
+.menu_activo {
+  color: white !important;
+}
+
+.menu_open {
+  display: block !important;
+}
+
 .btntabla, .formaccion {
   display: inline-block;
 }

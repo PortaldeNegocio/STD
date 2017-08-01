@@ -9,6 +9,10 @@
 <!-- AdminLTE App -->
 <script src="/dist/js/app.min.js"></script>
 
+{{-- custom script --}}
+<script src="{{ asset('/js/script.js') }}"></script>
+
+
 <script src="{{ mix('/js/app.js') }}"></script>
 
 

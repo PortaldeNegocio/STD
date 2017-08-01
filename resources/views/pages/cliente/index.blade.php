@@ -10,6 +10,11 @@
 	<script src="{{ asset('/datatables.net-bs/css/dataTables.bootstrap.min.css') }}"></script>	
 @endsection
 
+@section('idpage')
+id="page_clientes"
+@endsection
+
+
 @section('content')
 
     <!-- content-wrapper -->	
