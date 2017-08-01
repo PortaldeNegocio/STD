@@ -193,7 +193,7 @@ ul.paginacion {
 }
 
 #dataTableNet_length select {
-  width: 40%;
+  width: 38%;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -212,7 +212,7 @@ ul.paginacion {
 }
 
 #dataTableNet_filter input {
-  width: 78%;
+  width: 75%;
   height: 34px;
   padding: 6px 12px;
   margin-left: 10px;
@@ -244,4 +244,25 @@ ul.paginacion {
 
 #dataTableNet_paginate .current {
   background: #00a152;
+}
+
+table.dataTable thead .sorting:after {
+  opacity: 0.2;
+  font-family: std;
+  content: "w";
+  float: right;
+}
+
+table.dataTable thead .sorting_asc:after {
+  font-family: std;
+  content: "u";
+  float: right;
+  color: #757575;
+}
+
+table.dataTable thead .sorting_desc:after {
+  font-family: std;
+  content: "v";
+  float: right;
+  color: #757575;
 }
