@@ -90,6 +90,17 @@
 						'required'
 				]) !!}
 			</div>
+
+			<div class="form-group">
+				{!! Form::label('Provincia', 'Provincia:') !!}
+				{!! Form::select('provincia',[], null,
+					[
+						'id'		=>	'provincia',
+						'class'       => 'form-control' 
+				]) !!}
+			</div>		
+
+
 			<div class="form-group">
 				{!! Form::label('Direccion', 'Dirección:') !!}
 				{!! Form::text('Direccion', $cliente->Direccion, 
@@ -99,6 +110,8 @@
 						
 				]) !!}
 			</div>
+
+
 			<div class="form-group">
 				 {{ Form::hidden('StrTelefonos','' , array(
 			 						'id' => 'inputArray',
@@ -160,6 +173,10 @@
 					</tbody>
 				</table>
 			</div>
+
+
+
+
 
 			<div class="form-group">
 				<a id="buttonNuevo" class="headgrid__enlace btn btn-warning" href="{{ route('cliente.index') }}">

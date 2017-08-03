@@ -4,6 +4,7 @@ namespace STD\Http\Controllers;
 
 use Illuminate\Http\Request;
 use STD\Http\Controllers\Controller;
+use STD\Provincia;
 
 class ProvinciaController extends Controller
 {
@@ -81,5 +82,11 @@ class ProvinciaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getProvincias()
+    {
+        $provincias = Provincia::all();
+        return response()->json($provincias);
     }
 }

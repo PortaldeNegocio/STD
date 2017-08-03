@@ -28,6 +28,31 @@ function setDataTable(){
  $('#dataTableNet').DataTable();
 };
 
+function getAllProvincia(){
+//$(document).on('click','#provincia', function(e){
+
+	//alert($("#provincia").options.length);
+	//if($("#provincia").length ==1){
+
+		var route = "/getProvincias";
+
+		$.ajax({
+			url:route,
+			type: 'GET',
+			dataType: 'json',
+			success: function(data){
+		    	for(i=0;i<data.length; i++){
+		        	$("#provincia").append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");
+		    	}		
+			},
+		    error: function (data) {
+		    	alert("error");
+		        console.log('Error:', data);
+		    }	
+		});
+	//};
+};
+
 
 //Select Row in TelefonoTable
 $(document).on('click','#tableTelefono tr', function(e){
@@ -112,4 +137,6 @@ $(document).on('click','#buttonAjaxGet', function(e){
 
 $(document).ready(function() {
 setDataTable();
+
+getAllProvincia();
 });

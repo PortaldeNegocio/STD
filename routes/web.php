@@ -14,6 +14,11 @@
 Route::resource('cliente', 'ClienteController');
 
 Route::delete('/destroyByAjax/{id}', 'ClienteController@destroyByAjax')->name('destroyByAjax');
+
+Route::get('getProvincias', 'ProvinciaController@getProvincias')->name('getProvincias');
+
+
+
 // Home page route
 
 Route::get('/', 'PagesController@index')->name('index');
