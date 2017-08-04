@@ -9,14 +9,13 @@
 	}
 
 
-
 	&_length{
 		
 		float: left;
 		margin-bottom: 20px;
 
 		select{
-			width: 40%;
+			width: 38%;
 		    height: 34px;
 		    padding: 6px 12px;
 		    font-size: 14px;
@@ -38,7 +37,7 @@
 		float: right;
 
 		input{
-			width: 78%;
+			width: 75%;
 		    height: 34px;
 		    padding: 6px 12px;
 		    margin-left: 10px;
@@ -78,3 +77,26 @@
 		
 	}
 }
+
+table.dataTable thead .sorting:after {
+    opacity: 0.2;
+   	font-family: std;
+    content: "w";
+    float: right;
+
+}
+
+table.dataTable thead .sorting_asc:after{
+	font-family: std;
+    content: "u";
+    float: right;
+    color: color(gris-oscuro);
+}
+
+table.dataTable thead .sorting_desc:after{
+	font-family: std;
+    content: "v";
+    float: right;
+    color: color(gris-oscuro);
+}
+

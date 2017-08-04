@@ -27,7 +27,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">Opciones</li>
-            <li class="">
+            <li class="menu_dashboard">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     <span class="pull-right-container">
@@ -44,11 +44,11 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('cliente.index') }}"><i class="fa fa-circle-o"></i> Clientes</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Solicitud</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Orden de Trabajo</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Trabajos de Campos</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Trabajos de Laboratorio</a></li>
+                    <li id="menu_clientes" ><a href="{{ route('cliente.index') }}"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                    <li id="menu_solicitud" ><a href="#"><i class="fa fa-circle-o"></i> Solicitud</a></li>
+                    <li id="menu_ordenTrabajo" ><a href="#"><i class="fa fa-circle-o"></i> Orden de Trabajo</a></li>
+                    <li id="menu_trabajosCampos" ><a href="#"><i class="fa fa-circle-o"></i> Trabajos de Campos</a></li>
+                    <li id="menu_trabajosLaboratorio" ><a href="#"><i class="fa fa-circle-o"></i> Trabajos de Laboratorio</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -60,8 +60,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Bitacora de Laboratorio</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Bitacora de Campo</a></li>
+                    <li id="menu_bitacoraLaboratorio" ><a href="#"><i class="fa fa-circle-o"></i> Bitacora de Laboratorio</a></li>
+                    <li id="menu_bitacoraLaboratorio" ><a href="#"><i class="fa fa-circle-o"></i> Bitacora de Campo</a></li>
                     
                 </ul>
             </li>
@@ -75,9 +75,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Cuentas por Cobrar</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Pagos</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Facturas</a></li>
+                    <li id="menu_cuentasCobrar" ><a href="#"><i class="fa fa-circle-o"></i> Cuentas por Cobrar</a></li>
+                    <li id="menu_pagos" ><a href="#"><i class="fa fa-circle-o"></i> Pagos</a></li>
+                    <li id="menu_facturas" ><a href="#"><i class="fa fa-circle-o"></i> Facturas</a></li>
                     
                 </ul>
             </li>
@@ -92,9 +92,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Informes de Estudio</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Informes Financieros</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Informes Administrativo</a></li>
+                    <li id="menu_informesEstudio" ><a href="#"><i class="fa fa-circle-o"></i> Informes de Estudio</a></li>
+                    <li id="menu_informesFinancieros" ><a href="#"><i class="fa fa-circle-o"></i> Informes Financieros</a></li>
+                    <li id="menu_informesAdministrativos" ><a href="#"><i class="fa fa-circle-o"></i> Informes Administrativo</a></li>
                     
                 </ul>
             </li>
@@ -109,9 +109,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Roles</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Perfiles</a></li>
+                    <li id="menu_usuarios" ><a href="#"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                    <li id="menu_roles" ><a href="#"><i class="fa fa-circle-o"></i> Roles</a></li>
+                    <li id="menu_perfiles" ><a href="#"><i class="fa fa-circle-o"></i> Perfiles</a></li>
                     
                 </ul>
             </li>        

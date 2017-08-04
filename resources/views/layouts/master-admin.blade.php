@@ -16,7 +16,7 @@
 
 </head>
 
-<body class="hold-transition skin-yellow fixed sidebar-mini">
+<body class="hold-transition skin-yellow fixed sidebar-mini" @yield('idpage')>
 
 <div class="wrapper">
 
