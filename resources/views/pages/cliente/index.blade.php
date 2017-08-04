@@ -11,7 +11,7 @@
 @endsection
 
 @section('idpage')
-id="page_clientes"
+id="menu_clientes"
 @endsection
 
 
