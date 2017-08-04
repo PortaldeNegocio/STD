@@ -90,6 +90,37 @@
 						'required'
 				]) !!}
 			</div>
+
+			<div class="form-group">
+				{!! Form::label('Provincia', 'Provincia:') !!}
+				{!! Form::select('provincia', 					
+						array('' =>'Seleccione una provincia')+$provincia, 
+						null,
+						[
+							'id'    =>	'provincia',
+							'class' => 'form-control' 
+						]) !!}
+			</div>		
+			<div class="form-group">
+				{!! Form::label('Canton', 'Cantón:') !!}
+				{!! Form::select('canton',[], null,
+					[
+						'id'		=>	'canton',
+						'class'       => 'form-control',
+						'placeholder'  => 'Seleccione un cantón'
+				]) !!}
+			</div>	
+			<div class="form-group">
+				{!! Form::label('Parroquia', 'Parroquia:') !!}
+				{!! Form::select('parroquia',[], null,
+					[
+						'id'		=>	'parroquia',
+						'class'       => 'form-control',
+						'placeholder'  => 'Seleccione una parroquia'
+				]) !!}
+			</div>	
+
+
 			<div class="form-group">
 				{!! Form::label('Direccion', 'Dirección:') !!}
 				{!! Form::text('Direccion', $cliente->Direccion, 
@@ -99,6 +130,8 @@
 						
 				]) !!}
 			</div>
+
+
 			<div class="form-group">
 				 {{ Form::hidden('StrTelefonos','' , array(
 			 						'id' => 'inputArray',
@@ -160,6 +193,10 @@
 					</tbody>
 				</table>
 			</div>
+
+
+
+
 
 			<div class="form-group">
 				<a id="buttonNuevo" class="headgrid__enlace btn btn-warning" href="{{ route('cliente.index') }}">

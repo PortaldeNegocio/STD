@@ -15,6 +15,9 @@ class CreateParroquiasTable extends Migration
     {
         Schema::create('parroquias', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('parroquia', 100);
+            $table->integer('canton_id')->unsigned();                
+            $table->foreign('canton_id')->references('id')->on('cantons');
             $table->timestamps();
         });
     }

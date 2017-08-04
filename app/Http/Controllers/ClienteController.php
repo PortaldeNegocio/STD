@@ -5,6 +5,7 @@ namespace STD\Http\Controllers;
 use Illuminate\Http\Request;
 use STD\Cliente;
 use STD\Telefono;
+use STD\Provincia;
 
 class ClienteController extends Controller
 {
@@ -34,10 +35,12 @@ class ClienteController extends Controller
      */
     public function create(Request $request){
         $cliente = new Cliente;
+        $provincia = Provincia::pluck('provincia','id')->all();
+
         if($request -> ajax()){
-            return response()->json(view('pages.cliente._form', compact('cliente'))->render());}
+            return response()->json(view('pages.cliente._form', compact('cliente', 'provincia'))->render());}
         
-        return view('pages.cliente.show', compact('cliente'));
+        return view('pages.cliente.show', compact('cliente', 'provincia'));
     }
 
     /**
@@ -52,6 +55,9 @@ class ClienteController extends Controller
         $cliente->NumeroDocumento = $request->NumeroDocumento;
         $cliente->Nombre = $request->Nombre;
         $cliente->Apellido = $request->Apellido;
+
+
+        
         $cliente->save();
 
         if(!is_null($request->StrTelefonos)){

@@ -4,6 +4,7 @@ namespace STD\Http\Controllers;
 
 use Illuminate\Http\Request;
 use STD\Http\Controllers\Controller;
+use STD\Parroquia;
 
 class ParroquiaController extends Controller
 {
@@ -81,5 +82,11 @@ class ParroquiaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getParroquias($canton_id)
+    {
+        $parroquias=Parroquia::where('canton_id', $canton_id)->get();
+         return response()->json($parroquias);
     }
 }

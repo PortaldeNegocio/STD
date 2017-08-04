@@ -17,8 +17,9 @@ class CreateEmailsTable extends Migration
             $table->increments('id');
             $table->enum('TipoEmail', ['Personal', 'Trabajo'])->default('Personal');
             $table->string('Email', 60);
-            $table->integer('ClienteId')->unsigned();
-            $table->foreign('ClienteId')->references('id')->on('clientes');            
+            $table->integer('cliente_id')->unsigned();                
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            
             $table->timestamps();     
         });
     }
