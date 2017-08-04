@@ -17,6 +17,9 @@ Route::delete('/destroyByAjax/{id}', 'ClienteController@destroyByAjax')->name('d
 
 Route::get('getProvincias', 'ProvinciaController@getProvincias')->name('getProvincias');
 
+Route::get('getCantones/{provincia_id}', 'CantonController@getCantones')->name('getCantones');
+
+Route::get('getParroquias/{canton_id}', 'ParroquiaController@getParroquias')->name('getParroquias');
 
 
 // Home page route

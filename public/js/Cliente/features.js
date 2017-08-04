@@ -28,6 +28,33 @@ function setDataTable(){
  $('#dataTableNet').DataTable();
 };
 
+$(document).on('change', '#provincia', function(e){
+	$("#canton").empty();
+	$("#parroquia").empty();
+    $.get("getCantones/"+e.target.value+"",function(response){
+        //console.log(response);
+    $("#canton").append("<option  selected='true' value='0'>Seleccione un cantón</option>");
+        for(i=0;i<response.length; i++){
+            $("#canton").append("<option value='"+response[i].id+"'>"+response[i].canton+"</option>");
+        }
+    });
+    document.getElementById("canton").selectedIndex = -1;
+
+});
+
+$(document).on('change', '#canton', function(e){
+	$("#parroquia").empty();
+    $.get("getParroquias/"+e.target.value+"",function(response){
+        //console.log(response);
+    $("#parroquia").append("<option  selected='true' value='0'>Seleccione una parroquia</option>");
+
+        for(i=0;i<response.length; i++){
+            $("#parroquia").append("<option value='"+response[i].id+"'>"+response[i].parroquia+"</option>");
+        }
+    });
+
+});
+
 function getAllProvincia(){
 //$(document).on('click','#provincia', function(e){
 
@@ -138,5 +165,6 @@ $(document).on('click','#buttonAjaxGet', function(e){
 $(document).ready(function() {
 setDataTable();
 
-getAllProvincia();
+/*getAllProvincia();
+*/
 });

@@ -11,8 +11,9 @@ class ProvinciasTableSeeder extends Seeder
      */
     public function run()
     {
+    	DB::statement("TRUNCATE TABLE provincias CASCADE");
           //delete provincias table records
-         DB::table('provincias')->delete();
+        // DB::table('provincias')->truncate();
          //insert some dummy records
          DB::table('provincias')->insert([
 			['id' => 1, 'provincia' =>  'AZUAY'],

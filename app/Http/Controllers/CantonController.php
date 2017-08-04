@@ -83,4 +83,10 @@ class CantonController extends Controller
     {
         //
     }
+
+    public function getCantones($provincia_id)
+    {
+        $cantones=Canton::where('provincia_id', $provincia_id)->get();
+         return response()->json($cantones);
+    }
 }
