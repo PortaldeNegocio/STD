@@ -20,9 +20,9 @@ class Cliente extends Model
     ];
 
 
-   //un cliente tiene una provincia
-/*    public function provincia(){
-        return $this->hasOne('STD\Provincia');
+/*   //un cliente tiene una provincia
+    public function provincia(){
+        return $this->hasOne('STD\Provincia','id');
     }*/
 
 /*    //un cliente tiene un canton
@@ -33,8 +33,8 @@ class Cliente extends Model
     //uno cliente tiene una parroquia
     public function parroquia(){
         return $this->hasOne('STD\Parroquia');
-    }*/
-
+    }
+*/
     //muchos telefonos pertenecen a un cliente
     public function telefonos(){
     	return $this->hasMany('STD\Telefono');//->select(array('Numero'));

@@ -15,7 +15,13 @@ class CreateFacturasTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('NumeroFactura',100);
+            $table->integer('SolicitudEstudioId')->unsigned();
+            $table->string('Codigo',100);            
             $table->timestamps();
+
+            $table->foreign('SolicitudEstudioId')->references('id')->on('solicitud_estudios');
+
         });
     }
 

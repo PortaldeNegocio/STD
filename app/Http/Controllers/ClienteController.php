@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use STD\Cliente;
 use STD\Telefono;
 use STD\Provincia;
+use STD\Canton;
+use STD\Parroquia;
+
 
 class ClienteController extends Controller
 {
@@ -36,11 +39,15 @@ class ClienteController extends Controller
     public function create(Request $request){
         $cliente = new Cliente;
         $provincia = Provincia::pluck('provincia','id')->all();
+        $cantones = [];
+        $parroquias = [];
 
         if($request -> ajax()){
-            return response()->json(view('pages.cliente._form', compact('cliente', 'provincia'))->render());}
+            return response()->json(
+                                view('pages.cliente._form', 
+                                    compact('cliente', 'provincia', 'cantones', 'parroquias'))->render());}
         
-        return view('pages.cliente.show', compact('cliente', 'provincia'));
+        return view('pages.cliente.show', compact('cliente', 'provincia', 'cantones', 'parroquias'));
     }
 
     /**
@@ -55,8 +62,9 @@ class ClienteController extends Controller
         $cliente->NumeroDocumento = $request->NumeroDocumento;
         $cliente->Nombre = $request->Nombre;
         $cliente->Apellido = $request->Apellido;
-
-
+        $cliente->provincia_id = $request->provincia;
+        $cliente->canton_id = $request->canton;
+        $cliente->parroquia_id = $request->parroquia;
         
         $cliente->save();
 
@@ -101,11 +109,17 @@ class ClienteController extends Controller
      */
     public function edit(Request $request, $id){
         $cliente = Cliente::find($id);
+        $provincia = Provincia::pluck('provincia','id')->all();
+        $cantones=Canton::where('provincia_id', $cliente->provincia_id)->pluck('canton','id')->all();
+        $parroquias=Parroquia::where('canton_id', $cliente->canton_id)->pluck('parroquia','id')->all();
+
         if($request -> ajax()){
-            return response()->json(view('pages.cliente._form', compact('cliente'))->render());
+            return response()->json(
+                                view('pages.cliente._form', 
+                                    compact('cliente','provincia','cantones', 'parroquias'))->render());
         }
       
-        return view('pages.cliente.show', compact('cliente'));
+        return view('pages.cliente.show', compact('cliente','provincia','cantones', 'parroquias'));
     }
 
     /**
@@ -122,16 +136,15 @@ class ClienteController extends Controller
         $cliente->NumeroDocumento = $request->NumeroDocumento;
         $cliente->Nombre = $request->Nombre;
         $cliente->Apellido = $request->Apellido;
-
+        $cliente->provincia_id = $request->provincia;
+        $cliente->canton_id = $request->canton;
+        $cliente->parroquia_id = $request->parroquia;
+        
         $cliente->save();
 
         if(!is_null($request->StrTelefonos)){
             foreach (json_decode($request->StrTelefonos, true) as $fono) {
-
                 if(is_null($fono['id']) || ($fono['id'])=="undefined" ){
-                    
-                   // dd("is null id true "+$fono['id']);
-                    
                     if($fono['deleted']=='false'){
                         $newTelefono = new Telefono;
                         $newTelefono->TipoTelefono = $fono['tipo'];
@@ -140,8 +153,30 @@ class ClienteController extends Controller
                         $newTelefono->save();
                     };
                 }else{
-                  //dd("else is null id true ");
+                    $telefono = Telefono::find($fono['id']);
+                    if(($fono['deleted'])=='true'){
                     
+                         $telefono->delete();
+                    }else{
+                        $telefono->TipoTelefono = $fono['tipo'];
+                        $telefono->Numero = $fono['dato'];
+                        $telefono->save();
+                    };
+                };
+            };
+        };
+
+        if(!is_null($request->StrEmails)){
+            foreach (json_decode($request->StrEmails, true) as $email) {
+                if(is_null($email['id']) || ($email['id'])=="undefined" ){
+                    if($email['deleted']=='false'){
+                        $newEmail = new Email;
+                        $newEmail->TipoEmail = $email['tipo'];
+                        $newEmail->Numero = $email['dato'];
+                        $newEmail->cliente_id = $cliente->id;
+                        $newEmail->save();
+                    };
+                }else{
                     $telefono = Telefono::find($fono['id']);
                     if(($fono['deleted'])=='true'){
                     

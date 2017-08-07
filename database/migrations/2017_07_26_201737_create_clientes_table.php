@@ -20,7 +20,14 @@ class CreateClientesTable extends Migration
             $table->string('Nombre', 50);
             $table->string('Apellido', 50);
             $table->boolean('Activo')->default('true');
-                        
+
+            $table->integer('provincia_id')->unsigned();                
+            $table->foreign('provincia_id')->references('id')->on('provincias');
+            $table->integer('canton_id')->unsigned();                
+            $table->foreign('canton_id')->references('id')->on('cantons');
+            $table->integer('parroquia_id')->unsigned();                
+            $table->foreign('parroquia_id')->references('id')->on('parroquias');
+
             $table->timestamps();
         });
     }

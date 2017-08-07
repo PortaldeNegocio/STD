@@ -15,6 +15,12 @@ class CreateAbonosTable extends Migration
     {
         Schema::create('abonos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('MetodoPago');
+            $table->string('Total');
+            $table->string('NumeroCuenta');
+            $table->dateTime('Fecha');
+            $table->integer('OrdenTrabajoId')->unsigned();
+            $table->foreign('OrdenTrabajoId')->references('id')->on('orden_trabajos');
             $table->timestamps();
         });
     }

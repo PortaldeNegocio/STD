@@ -15,7 +15,13 @@ class CreateTrabajoLaboratoriosTable extends Migration
     {
         Schema::create('trabajo_laboratorios', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('IdTrabajoCampo')->unsigned();
+            $table->longText('ObservacionesTrabajo');
+            $table->longText('DescripcionMuestra');
+            $table->mediumText('Estado');
             $table->timestamps();
+
+            $table->foreign('IdTrabajoCampo')->references('id')->on('trabajo_campos');
         });
     }
 

@@ -15,7 +15,17 @@ class CreateSolicitudEstudiosTable extends Migration
     {
         Schema::create('solicitud_estudios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('Descripcion', 100);
+            $table->integer('cliente_id')->unsigned();
+            $table->string('Obra',100);           
+            $table->string('Direccion',150);
+            $table->string('Referencia',200);
+            $table->string('Coordenadas',50);
+            $table->string('Contacto',100);
+            $table->decimal('CostoObra', 9, 2);
             $table->timestamps();
+
+            $table->foreign('cliente_id')->references('id')->on('clientes');
         });
     }
 
