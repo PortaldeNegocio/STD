@@ -54,8 +54,26 @@ $factory->define(STD\Cliente::class, function (Faker\Generator $faker) {
         'provincia_id'    => $provincia,
         'canton_id'       => $canton,
         'parroquia_id'    => $faker->randomElement($parroquiasIds),
-
-        
-
     ];
 });
+
+$factory->define(STD\SolicitudEstudio::class, function (Faker\Generator $faker) {
+    $clientesIds = STD\Cliente::pluck('id')->all();
+    $parroquiasIds = STD\Parroquia::pluck('id')->all();
+
+    return[
+        'Descripcion'  => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'cliente_id'   => $faker->randomElement($clientesIds),
+        'Obra'         => $faker->text(20),
+        'parroquia_id' => $faker->randomElement($parroquiasIds),
+        'Direccion'    => $faker->text(30),
+        'Referencia'   => $faker->text(50),
+        'Coordenadas'  => $faker->text(10),
+        'Contacto'     => $faker->firstNameMale,
+        'CostoObra'    => $faker->numberBetween($min = 1000, $max = 9000),
+        'Progreso'     => $faker->numberBetween($min = 0, $max = 100)
+    ];
+
+});
+
+//https://github.com/fzaninotto/Faker

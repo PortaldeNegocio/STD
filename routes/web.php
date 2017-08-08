@@ -21,6 +21,7 @@ Route::get('getCantones/{provincia_id}', 'CantonController@getCantones')->name('
 
 Route::get('getParroquias/{canton_id}', 'ParroquiaController@getParroquias')->name('getParroquias');
 
+Route::resource('solicitud','SolicitudEstudioController');
 
 // Home page route
 

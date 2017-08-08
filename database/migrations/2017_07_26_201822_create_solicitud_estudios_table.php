@@ -17,15 +17,18 @@ class CreateSolicitudEstudiosTable extends Migration
             $table->increments('id');
             $table->string('Descripcion', 100);
             $table->integer('cliente_id')->unsigned();
+            $table->integer('parroquia_id')->unsigned();
             $table->string('Obra',100);           
             $table->string('Direccion',150);
             $table->string('Referencia',200);
             $table->string('Coordenadas',50);
             $table->string('Contacto',100);
             $table->decimal('CostoObra', 9, 2);
+            $table->integer('Progreso');
             $table->timestamps();
 
             $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('parroquia_id')->references('id')->on('parroquias');
         });
     }
 

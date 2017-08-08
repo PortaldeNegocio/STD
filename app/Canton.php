@@ -10,4 +10,8 @@ class Canton extends Model
 
     protected $fillable = ['Canton','provincia_id'];
 
+    //una solicitud de estudio tiene una Canton
+    public function provincia(){
+        return $this->belongsTo('STD\Provincia');
+    }
 }

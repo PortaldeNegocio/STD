@@ -24,6 +24,11 @@ class SolicitudEstudio extends Model
         return $this->belongsTo('STD\Cliente');
     }
 
+    //una solicitud de estudio tiene una parroquia
+    public function parroquia(){
+        return $this->belongsTo('STD\Parroquia');
+    }
+
     //una solicitud de estudio tiene muchas ordenes de trabajo
     public function ordenTrabajo(){
         return $this->hasMany('STD\OrdenTrabajo');

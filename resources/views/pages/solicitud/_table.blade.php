@@ -26,35 +26,55 @@
 				</a>
 			</div>
 		</div>
+
 		<div class="clearfix"></div>
 		<table id="dataTableNet" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th class="sorting_asc">No. Documento</th>
-                    <th class="sorting">Nombre</th>
-                    <th>Apellido</th>
+                    <th class="sorting_asc">ID</th>
+                    <th class="sorting">Cliente</th>
+                    <th>Obra</th>
+                    <th>Dirección</th>
+                    <th>Progreso</th>                   
+                    <th>&nbsp</th>          
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($clientes as $item)
+                @foreach ($solicitudEstudios as $item)
                     <tr>
-                        <td> {{ $item->NumeroDocumento }} </td>
-                        <td> {{ $item->Nombre }} </td>
-		                <td> {{ $item->Apellido }} </td>
+                        <td> {{ $item->id }} </td>
+                        <td> {{ $item->cliente->Nombre }} </td>
+		                <td> {{ $item->Obra }} </td>
+		                <td> {{ $item->Direccion }} </td>
+		                <td> 
+		                    <div class="progress progress-xs progress-striped active">
+		                      	<div class="progress-bar {{
+										$item->Progreso >= 1 && $item->Progreso <= 24 ? 
+		                      				'progress-bar-red' : 
+				                      		($item->Progreso >= 25 && $item->Progreso <= 49 ? 
+				                      			'progress-bar-yellow' :
+				                      			($item->Progreso >= 50 && $item->Progreso <= 74 ?
+				                      				'progress-bar-aqua' : 
+				                      				($item->Progreso >= 75 && $item->Progreso <= 99 ?
+				                      					'progress-bar-primary' : 
+				                      					'progress-bar-green'				                      			
+				                      				)
+				                      			) 
+				                      		)													
+		                      	}} " style="width: {{ $item->Progreso }}%;"></div>
+		                    </div>
+		                </td>
 		                <td>
-							{!! Form::open([
-		                                    'route' => ['destroyByAjax', $item->id],
-		                                    'method' => 'DELETE',
-		                                    'class' => 'formaccion'			            
-			                                ]) !!}
-
-		        	            <a href="#" class="btn-show btntabla" >
+		                    <span class="badge bg-yellow">{{ $item->Progreso }}%</span>
+		                </td>
+		                <td>
+		                    <a id="buttonAjaxGet" href="{{ route('solicitud.edit',$item->id) }}" 		class="btn-edit btntabla">
 									<span class="icon-eye"></span>
-								</a>
-		                    {!! Form::close() !!}
+							</a>
+
 									
-		                    <a id="buttonAjaxGet" href="{{ route('cliente.edit',$item->id) }}" class="btn-edit btntabla">
+		                    <a id="buttonAjaxGet" href="{{ route('solicitud.edit',$item->id) }}" class="btn-edit btntabla">
 								<span class="icon-pencil"></span>
 							</a>
 		                                
@@ -74,7 +94,7 @@
 	            @endforeach
 		    </tbody>
 		</table>
-		{!! $clientes->render() !!}
+		
 
     </section>
     <!-- end content section -->

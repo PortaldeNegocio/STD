@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ParroquiasTableSeeder::class);
         // $this->call(UsersTableSeeder::class);
         $this->call(ClientesTableSeeder::class);
-    
+        $this->call(SolicitudEstudioTableSeeder::class);
     }
 }
