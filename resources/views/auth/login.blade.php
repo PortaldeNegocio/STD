@@ -20,13 +20,13 @@
 
             <section class="content-header">
 
-                <ol class="breadcrumb">
+                {{-- <ol class="breadcrumb">
 
                     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li><a href="/login">Login</a></li>
                     <li class="active">Login</li>
 
-                </ol>
+                </ol> --}}
 
             </section>
 
@@ -42,7 +42,7 @@
 
                     <div class="login-logo">
 
-                        <a href="/"><b>Admin</b>DASH</a>
+                        <a href="/"><b>Admin</b> STD</a>
 
                     </div>
 
@@ -60,7 +60,7 @@
 
                         <!-- social sign in links -->
 
-                        @include('auth.social-sign-in-links')
+                        {{-- @include('auth.social-sign-in-links') --}}
 
                         <!-- end social sign in links -->
 

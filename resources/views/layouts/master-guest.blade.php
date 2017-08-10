@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="hold-transition skin-blue layout-top-nav">
+<body class="hold-transition skin-yellow layout-top-nav">
 
 <!-- body-fill for consistency with /home view -->
 

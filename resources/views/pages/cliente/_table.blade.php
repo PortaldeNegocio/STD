@@ -1,31 +1,38 @@
  <!-- content-wrapper -->    
 
     <!-- content-header has breadcrumbs -->
-    <section class="content-header">
-        <h1>
-            Clientes
-            <small>Todos los registros de clientes</small>
-        </h1>
+    <section class="content-header__page">
+        <div class="content-header__left col-xs-12 col-sm-6">
+        	<h1>
+        	    Clientes
+        	    <small>Todos los registros de clientes</small>           
+        	</h1>
+        	 <a id="buttonAjaxGet" class="content-header__enlace leer-mas" href="{{ route('cliente.create') }}">
+				<span class="icon-plus-square"></span> Nuevo
+			</a>
+        </div>
 
-        <ol class="breadcrumb">
-            <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-            <li class="active">Clientes</li>
-        </ol>
+        <div class="content-header__right col-xs-12 col-sm-6">
+        	<ol class="breadcrumb">
+        	    <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        	    <li class="active">Clientes</li>
+        	</ol>
+        </div>
 
     </section>
     <!-- end content-header section -->
-
+	<div class="clearfix"></div>
     <!-- content -->
     <section class="content">
 
         <!-- Your Page Content Here -->
-		<div class="headgrid">
+		{{-- <div class="headgrid">
 			<div class="pull-right">
 				<a id="buttonAjaxGet" class="headgrid__enlace leer-mas" href="{{ route('cliente.create') }}">
 					<span class="icon-plus-square"></span> Nuevo
 				</a>
 			</div>
-		</div>
+		</div> --}}
 		<div class="clearfix"></div>
 		<table id="dataTableNet" class="table table-bordered table-striped">
             <thead>

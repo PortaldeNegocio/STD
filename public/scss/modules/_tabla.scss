@@ -76,6 +76,14 @@
 		}
 		
 	}
+
+	&_info{
+		text-align: right;
+	}
+
+	&_paginate{
+		text-align: right;
+	}
 }
 
 table.dataTable thead .sorting:after {
