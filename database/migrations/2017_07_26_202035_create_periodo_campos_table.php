@@ -15,7 +15,12 @@ class CreatePeriodoCamposTable extends Migration
     {
         Schema::create('periodo_campos', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamp('FechaInicio');
+            $table->timestamp('FechaFin');
+            $table->integer('IdTrabajoCampo');
             $table->timestamps();
+
+            $table->foreign('IdTrabajoCampo')->references('id')->on('trabajo_campos');
         });
     }
 

@@ -15,7 +15,11 @@ class CreateInformeFinalsTable extends Migration
     {
         Schema::create('informe_finals', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('IdOrdenTrabajo');
+            $table->longText('url');
             $table->timestamps();
+
+            $table->foreign('IdOrdenTrabajo')->references('id')->on('orden_trabajos');
         });
     }
 

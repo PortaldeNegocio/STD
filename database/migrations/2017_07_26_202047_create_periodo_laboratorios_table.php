@@ -15,7 +15,12 @@ class CreatePeriodoLaboratoriosTable extends Migration
     {
         Schema::create('periodo_laboratorios', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamp('FechaInicio');
+            $table->timestamp('FechaFin');
+            $table->integer('IdTrabajoLaboratorio');
             $table->timestamps();
+
+            $table->foreign('IdTrabajoLaboratorio')->references('id')->on('trabajo_laboratorios');
         });
     }
 

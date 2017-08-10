@@ -39,9 +39,23 @@ $factory->define(STD\Widget::class, function ($faker) {
 });
 
 $factory->define(STD\Cliente::class, function (Faker\Generator $faker) {
+    $provinciasIds = STD\Provincia::pluck('id')->all();
+    $provincia = $faker->randomElement($provinciasIds);
+
+    $cantonesIds= STD\Canton::where('provincia_id', $provincia)->pluck('id')->all();
+    $canton = $faker->randomElement($cantonesIds);
+
+    $parroquiasIds = STD\Parroquia::where('canton_id', $canton)->pluck('id')->all();
+
     return [
-		'NumeroDocumento' => $faker->text(15),
-		'Nombre'          => $faker->text(20),
-		'Apellido'        => $faker->text(20),
+        'NumeroDocumento' => $faker->text(15),
+        'Nombre'          => $faker->text(20),
+        'Apellido'        => $faker->text(20),
+        'provincia_id'    => $provincia,
+        'canton_id'       => $canton,
+        'parroquia_id'    => $faker->randomElement($parroquiasIds),
+
+        
+
     ];
 });

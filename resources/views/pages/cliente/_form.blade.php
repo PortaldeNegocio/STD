@@ -95,7 +95,7 @@
 				{!! Form::label('Provincia', 'Provincia:') !!}
 				{!! Form::select('provincia', 					
 						array('' =>'Seleccione una provincia')+$provincia, 
-						null,
+						$cliente->provincia_id,
 						[
 							'id'    =>	'provincia',
 							'class' => 'form-control' 
@@ -103,7 +103,7 @@
 			</div>		
 			<div class="form-group">
 				{!! Form::label('Canton', 'Cantón:') !!}
-				{!! Form::select('canton',[], null,
+				{!! Form::select('canton',$cantones, $cliente->canton_id,
 					[
 						'id'		=>	'canton',
 						'class'       => 'form-control',
@@ -112,7 +112,7 @@
 			</div>	
 			<div class="form-group">
 				{!! Form::label('Parroquia', 'Parroquia:') !!}
-				{!! Form::select('parroquia',[], null,
+				{!! Form::select('parroquia',$parroquias, $cliente->parroquia_id,
 					[
 						'id'		=>	'parroquia',
 						'class'       => 'form-control',
@@ -134,7 +134,7 @@
 
 			<div class="form-group">
 				 {{ Form::hidden('StrTelefonos','' , array(
-			 						'id' => 'inputArray',
+			 						'id' => 'inputArrayTelefono',
 			 						'class' => 'form-control')) }}
 
 				{!! Form::label('telefono', 'Teléfono:',  
@@ -151,21 +151,18 @@
 						],
 						null,
 						[
-							'id' => 'inputTipoTelefono',
+							'id'    => 'inputTipoTelefono',
 							'class' => 'form-control',
 							'style' =>'  width: 20%; display: inline-block;'
 						]
 					) !!}
 				{!! Form::text('inputNumeroTelefono', null, 
 					[
-						'id'=> 'inputNumeroTelefono',
+						'id'          => 'inputNumeroTelefono',
 						'class'       => 'form-control', 
 						'placeholder' => 'Numero de Telefono',
 						'style'       => 'width: 40%; display: inline-block;'
-						
 				])!!}
-
-
 				<a href="#" id="agregarTelefono" >
 					<span id="labelAgregarTelefono" class="icon-trash-o btn btn-default", style="width: 18%" >Agregar</span>
 				</a>
@@ -174,7 +171,7 @@
 				</a>
 			</div>
 			<div class="form-group">      
-				<table id="TableRecord"  class="table table-hover table-strip gridlist" >
+				<table id="TableRecordTelefono"  class="table table-hover table-strip gridlist" >
 					<thead>
 						<tr>
 							<th>Tipo Telefono</th>
@@ -195,6 +192,66 @@
 			</div>
 
 
+			<div class="form-group">
+				 {{ Form::hidden('StrEmails','' , array(
+			 						'id' => 'inputArrayEmail',
+			 						'class' => 'form-control')) }}
+
+				{!! Form::label('email', 'Email:',  
+				[
+					'style' =>' display: block;'
+				]
+				) !!}
+				 {!! Form::select('inputTipoEmail',
+						[
+							'Personal'   => 'Personal',
+							'Trabajo'    => 'Trabajo',
+						],
+						null,
+						[
+							'id' => 'inputTipoEmail',
+							'class' => 'form-control',
+							'style' =>'  width: 20%; display: inline-block;'
+						]
+					) !!}
+				{!! Form::text('inputEmail', null, 
+					[
+						'id'          => 'inputEmail',
+						'class'       => 'form-control', 
+						'placeholder' => 'Numero de Telefono',
+						'style'       => 'width: 40%; display: inline-block;'
+				])!!}
+				<a href="#" id="agregarEmail" >
+					<span id="labelAgregarEmail" class="icon-trash-o btn btn-default", style="width: 18%" >Agregar</span>
+				</a>
+				<a href="#" id="eliminarEmail" >
+					<span id="labelEliminarEmail" class="icon-trash-o btn btn-default", style="width: 18%">Eliminar</span>
+				</a>
+				
+				<div class="form-group">      
+				<table id="TableRecordEmail"  class="table table-hover table-strip gridlist" >
+					<thead>
+						<tr>
+							<th>Tipo Email</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody id="tableEmail">
+						@foreach ($cliente->emails as $email)
+							<tr>
+								<td class="id" style="display:none;">{{ $email->id }}</td>
+								<td class="tipo">{{ $email->TipoEmail }}</td>
+								<td class="dato">{{ $email->Email }}</td>
+								<td class="deleted" style="display:none;">false</td>
+							</tr>
+					 	@endforeach
+					</tbody>
+				</table>
+			</div>
+
+
+
+				</div>
 
 
 
