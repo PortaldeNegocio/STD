@@ -22,12 +22,23 @@ class SolicitudEstudioController extends Controller
      */
     public function index(Request $request)
     {
-        $solicitudEstudios = SolicitudEstudio::all();
+        return view ('pages.solicitud.index');
+
+        // $solicitudEstudios = SolicitudEstudio::all();
          
-        if($request -> ajax()){
-            return response()->json(view('pages.solicitud._table', compact('solicitudEstudios'))->render());            
-        }
-        return view('pages.solicitud.index', compact('solicitudEstudios'));
+        // if($request -> ajax()){
+        //     return response()->json(view('pages.solicitud._table', compact('solicitudEstudios'))->render());            
+        // }
+        // return view('pages.solicitud.index', compact('solicitudEstudios'));
+    }
+
+    public function getSolicitudes($estado)
+    {
+        //$solicitudEstudios = SolicitudEstudio::with(['cliente'])->->get();
+        $solicitudEstudios = SolicitudEstudio::where('Estado', $estado)->with(['cliente'])->get();
+        return $solicitudEstudios;
+
+
     }
 
     /**

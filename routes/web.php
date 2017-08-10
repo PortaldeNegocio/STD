@@ -21,7 +21,15 @@ Route::get('getCantones/{provincia_id}', 'CantonController@getCantones')->name('
 
 Route::get('getParroquias/{canton_id}', 'ParroquiaController@getParroquias')->name('getParroquias');
 
+
+//Solicitud
 Route::resource('solicitud','SolicitudEstudioController');
+Route::get('getSolicitudes/{estado}', 'SolicitudEstudioController@getSolicitudes')->name('getSolicitudes');
+
+Route::get('/vue', function () {
+    return view('pages.exampleVue');
+});
+
 
 // Home page route
 

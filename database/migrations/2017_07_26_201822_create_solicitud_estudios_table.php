@@ -25,6 +25,7 @@ class CreateSolicitudEstudiosTable extends Migration
             $table->string('Contacto',100);
             $table->decimal('CostoObra', 9, 2);
             $table->integer('Progreso');
+            $table->enum('Estado', ['En Desarrollo', 'Finalizado', 'Anulado'])->default('En Desarrollo');
             $table->timestamps();
 
             $table->foreign('cliente_id')->references('id')->on('clientes');

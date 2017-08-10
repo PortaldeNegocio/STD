@@ -60,6 +60,7 @@ $factory->define(STD\Cliente::class, function (Faker\Generator $faker) {
 $factory->define(STD\SolicitudEstudio::class, function (Faker\Generator $faker) {
     $clientesIds = STD\Cliente::pluck('id')->all();
     $parroquiasIds = STD\Parroquia::pluck('id')->all();
+    $estados =  ['En Desarrollo', 'Finalizado', 'Anulado'];
 
     return[
         'Descripcion'  => $faker->sentence($nbWords = 6, $variableNbWords = true),
@@ -71,6 +72,7 @@ $factory->define(STD\SolicitudEstudio::class, function (Faker\Generator $faker) 
         'Coordenadas'  => $faker->text(10),
         'Contacto'     => $faker->firstNameMale,
         'CostoObra'    => $faker->numberBetween($min = 1000, $max = 9000),
+        'Estado'      => $faker->randomElement($estados),
         'Progreso'     => $faker->numberBetween($min = 0, $max = 100)
     ];
 
