@@ -1,0 +1,54 @@
+
+    body {
+        font-family: Helvetica, Arial, Verdana, Sans-serif;        
+    }
+    .pasosPedido {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;        
+        overflow: hidden;
+    }
+    .pasosPedido li {
+        float: left;
+        font-size: 12px;
+        padding: 5px 7px 5px 35px;
+        width: 200px;
+    }    
+    .pasosPedido li.arrow_box {
+        background: none repeat scroll 0 0 #E8EEEE;
+        position: relative;
+    }    
+    .pasosPedido .arrow_box:after, .pasosPedido .arrow_box:before {
+        left: 100%; 
+		top: 50%; 
+		border: solid transparent; 
+		content: " "; 
+		height: 0; 
+		width: 0; 
+		position: absolute; 
+		pointer-events: none; 
+    }
+    .pasosPedido .arrow_box:after {
+        border-color: rgba(232, 238, 238, 0); 
+		border-left-color: #e8eeee; 
+		border-width: 18px; 
+		margin-top: -18px; 	
+    }
+   
+    
+    .pasosPedido li.activo {
+        background-color: #BBC6C8;
+    }
+    .pasosPedido li.activo:after {
+        border-color: rgba(232, 238, 238, 0) rgba(232, 238, 238, 0) rgba(232, 238, 238, 0) #BBC6C8;
+    }
+    .pasosPedido .op1 {
+        z-index: 3;
+    }
+    .pasosPedido .op2 {
+        z-index: 2;
+    }
+    .pasosPedido .op3 {
+        z-index: 1;
+    }
+    

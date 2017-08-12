@@ -30,6 +30,9 @@ Route::get('/vue', function () {
     return view('pages.exampleVue');
 });
 
+Route::get('/mainSolicitud', function () {
+    return view('pages.solicitud.mainSolicitud');
+});
 
 // Home page route
 

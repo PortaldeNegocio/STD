@@ -9,7 +9,7 @@ class OrdenTrabajo extends Model
     protected $table= "orden_trabajos";
 
     protected $fillable = [
-        'SolicitudEstudioId',
+        'solicitud_estudio_id',
         'UsuarioIdAutorizado',
         'UsuarioIdResponsable',
         'Descripcion',

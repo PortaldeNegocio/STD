@@ -15,7 +15,7 @@ class CreateOrdenTrabajosTable extends Migration
     {
         Schema::create('orden_trabajos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('SolicitudEstudioId')->unsigned();
+            $table->integer('solicitud_estudio_id')->unsigned();
             $table->integer('UsuarioIdAutorizado')->unsigned();
             $table->integer('UsuarioIdResponsable')->unsigned();
             $table->string('Descripcion',100); 
@@ -26,7 +26,7 @@ class CreateOrdenTrabajosTable extends Migration
             $table->decimal('Extras', 9, 2);  
             $table->timestamps();
 
-            $table->foreign('SolicitudEstudioId')->references('id')->on('solicitud_estudios');
+            $table->foreign('solicitud_estudio_id')->references('id')->on('solicitud_estudios');
             $table->foreign('UsuarioIdAutorizado')->references('id')->on('users');
             $table->foreign('UsuarioIdResponsable')->references('id')->on('users');
         });
