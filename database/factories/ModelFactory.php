@@ -78,4 +78,52 @@ $factory->define(STD\SolicitudEstudio::class, function (Faker\Generator $faker) 
 
 });
 
+$factory->define(STD\OrdenTrabajo::class, function (Faker\Generator $faker) {
+
+    $solicitudEstudioId = STD\SolicitudEstudio::pluck('id')->all();
+    $usuariosId = STD\User::pluck('id')->all();
+
+    $estados =  ['En Espera', 'En Proceso', 'En Ejecución', 'En Laboratorio'];
+
+    return[
+        'solicitud_estudio_id' => $faker->randomElement($solicitudEstudioId),
+        'UsuarioIdAutorizado'    => $faker->randomElement($usuariosId),
+        'UsuarioIdResponsable'   => $faker->randomElement($usuariosId),
+        'Descripcion'          => $faker->text(30),
+        'Fecha'                => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'RecibidoPor'          => $faker->name,
+        'Estado'               =>  $faker->randomElement($estados),
+        'Observacion'          => $faker->text(30),
+        'Extras'    => $faker->numberBetween($min = 1000, $max = 9000),
+    ];
+});
+
+$factory->define(STD\TrabajoCampo::class, function (Faker\Generator $faker) {
+      $usuariosId = STD\User::pluck('id')->all();
+    $OrdenTrabajoId = STD\OrdenTrabajo::pluck('id')->all();
+
+    return[
+        'orden_trabajo_id'     =>  $faker->unique()->randomElement($OrdenTrabajoId),
+        'UsuarioIdResponsable'   => $faker->randomElement($usuariosId),
+        'EquiposUtilizados'    => $faker->text(5),
+        'Operadores'           => $faker->text(5),
+        'Observacion'          => $faker->text(30),
+    ];
+});
+
+
+$factory->define(STD\TrabajoLaboratorio::class, function (Faker\Generator $faker) {
+
+    $trabajosCampoId = STD\OrdenTrabajo::pluck('id')->all();
+   
+    return[
+        'ObservacionesTrabajo' => $faker->text(30),
+        'DescripcionMuestra'   => $faker->text(10),
+        'Estado'               => $faker->text(10),
+        'trabajo_campo_id'     => $faker->randomElement($trabajosCampoId),
+    ];
+});
+
+
+
 //https://github.com/fzaninotto/Faker

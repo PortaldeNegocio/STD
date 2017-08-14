@@ -39,4 +39,9 @@ class OrdenTrabajo extends Model
 	public function trabajoCampo() {
         return $this->hasOne('STD\TrabajoCampo');
     }
+
+    public function informeFinal() {
+        return $this->hasMany('STD\InformeFinal');
+    }
+
 }

@@ -41,10 +41,31 @@ class SolicitudEstudioController extends Controller
                                         'cliente.telefonos',
                                     ])->get();
         return $solicitudEstudios;
-
-
     }
 
+
+    public function findSolicitudEstudio($id)
+    {
+         $solicitudEstudios = SolicitudEstudio::
+            with([
+                'cliente',
+                'ordenesTrabajo',
+                'ordenesTrabajo.trabajoCampo',
+                'ordenesTrabajo.trabajoCampo.trabajosLaboratorio',
+               // 'ordenesTrabajo.informeFinal'
+                ])->find($id);
+
+/*        $solicitudEstudios = 
+
+            SolicitudEstudio::find($id)
+                ->with(['cliente',
+                        'ordenTrabajo',
+                        'ordenTrabajo.trabajoCampo',
+                        'ordenTrabajo.trabajoCampo.trabajoLaboratorio'
+                    ])->get();
+*/
+        return $solicitudEstudios;
+    }
     /**
      * Show the form for creating a new resource.
      *

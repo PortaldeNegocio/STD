@@ -21,7 +21,7 @@ class CreateOrdenTrabajosTable extends Migration
             $table->string('Descripcion',100); 
             $table->dateTime('Fecha');
             $table->string('RecibidoPor',100);
-            $table->enum('Estado', ['En Espera', 'En Proceso', 'En Ejecución', 'Finalizado', 'Anulado'])->default('En Espera');
+            $table->enum('Estado', ['En Espera', 'En Proceso', 'En Ejecución', 'En Laboratorio'])->default('En Espera');
             $table->text('Observacion');
             $table->decimal('Extras', 9, 2);  
             $table->timestamps();

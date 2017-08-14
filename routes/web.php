@@ -26,6 +26,9 @@ Route::get('getParroquias/{canton_id}', 'ParroquiaController@getParroquias')->na
 Route::resource('solicitud','SolicitudEstudioController');
 Route::get('getSolicitudes/{estado}', 'SolicitudEstudioController@getSolicitudes')->name('getSolicitudes');
 
+
+Route::get('findSolicitudEstudio/{id}', 'SolicitudEstudioController@findSolicitudEstudio')->name('findSolicitudEstudio');
+
 Route::get('/vue', function () {
     return view('pages.exampleVue');
 });
