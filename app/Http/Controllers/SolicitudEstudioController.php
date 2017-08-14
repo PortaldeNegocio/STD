@@ -34,12 +34,8 @@ class SolicitudEstudioController extends Controller
 
     public function getSolicitudes($estado)
     {
-        //$solicitudEstudios = SolicitudEstudio::with(['cliente'])->->get();
-        $solicitudEstudios = SolicitudEstudio::where('Estado', $estado)
-                                ->with(['cliente',
-                                        'ordenTrabajo',
-                                        'cliente.telefonos',
-                                    ])->get();
+        $solicitudEstudios = SolicitudEstudio::with(['cliente'])->get();
+        
         return $solicitudEstudios;
     }
 
