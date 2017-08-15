@@ -30,7 +30,7 @@ class SolicitudEstudio extends Model
     }
 
     //una solicitud de estudio tiene muchas ordenes de trabajo
-    public function ordenTrabajo(){
+    public function ordenesTrabajo(){
         return $this->hasMany('STD\OrdenTrabajo');
     }
 

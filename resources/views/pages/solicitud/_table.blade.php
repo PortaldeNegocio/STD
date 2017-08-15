@@ -30,6 +30,8 @@
 		<div class="clearfix"></div>
 
 
+        <!-- v-model => crea un enlace al atributo value -->
+        <!-- v-bind: => crea un enlace al atributo htm, ejm. class or style -->
 
 		<div id="tabs"  >
 			<div class="col-sm-4">
@@ -45,6 +47,7 @@
 				<input type="text" placeholder="Buscar" class="form-control" v-model="searchKey">	
 			</div>
 
+        <!-- Estructura de las pestañas para colocarle la case active -->
 			<ul class="nav nav-tabs collapsed-box">
 				<li 
 					v-bind:class="[selectedTab == 'En Desarrollo' ? 'active': '']"
@@ -103,6 +106,8 @@
 				                      	</div>
 				                    </div>
 				                </td>
+
+				                
 				                <td>
 				                    <span v-bind:class="
 				                      			[

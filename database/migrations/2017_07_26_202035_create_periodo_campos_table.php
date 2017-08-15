@@ -20,7 +20,7 @@ class CreatePeriodoCamposTable extends Migration
             $table->integer('IdTrabajoCampo');
             $table->timestamps();
 
-            $table->foreign('IdTrabajoCampo')->references('id')->on('trabajo_campos');
+            $table->foreign('IdTrabajoCampo')->references('orden_trabajo_id')->on('trabajo_campos');
         });
     }
 

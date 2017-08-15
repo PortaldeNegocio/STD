@@ -434,6 +434,7 @@ class ComposerStaticInit126c5045b76ef0fd8957b64fd888988e
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'OrdenTrabajoTableSeeder' => __DIR__ . '/../..' . '/database/seeds/OrdenTrabajoTableSeeder.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
@@ -895,6 +896,9 @@ class ComposerStaticInit126c5045b76ef0fd8957b64fd888988e
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'SolicitudEstudioTableSeeder' => __DIR__ . '/../..' . '/database/seeds/SolicitudEstudioTableSeeder.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'TrabajoCampoTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TrabajoCampoTableSeeder.php',
+        'TrabajoLaboratorioTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TrabajoLaboratorioTableSeeder.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

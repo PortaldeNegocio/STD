@@ -9,7 +9,7 @@ class OrdenTrabajo extends Model
     protected $table= "orden_trabajos";
 
     protected $fillable = [
-        'SolicitudEstudioId',
+        'solicitud_estudio_id',
         'UsuarioIdAutorizado',
         'UsuarioIdResponsable',
         'Descripcion',
@@ -39,4 +39,9 @@ class OrdenTrabajo extends Model
 	public function trabajoCampo() {
         return $this->hasOne('STD\TrabajoCampo');
     }
+
+    public function informeFinal() {
+        return $this->hasMany('STD\InformeFinal');
+    }
+
 }
