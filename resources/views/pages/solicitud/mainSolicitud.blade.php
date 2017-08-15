@@ -140,7 +140,8 @@
                  </h3>
                  <button
                      id="btnNewOrdenTrabajo" 
-                     class="headgrid__enlace btn leer-mas disabled" 
+                     class="headgrid__enlace btn leer-mas disabled"
+                     v-bind:class="[haveNewOrdenTrabajo ? 'disabled': '']"  
                      style="margin-bottom: 7px;"                      
                      v-on:click.prevent="newOrdenTrabajo()">
                      <span class="icon-plus-square"></span> Nuevo
@@ -215,13 +216,13 @@
                                 </li>
 
                                 <div class="box-tools  pull-right">
-                                    <a href="#" title="Finalizada"  v-if="ordenTrabajo.Estado == 'Finalizado'">
+                                    <a href="#" title="Finalizada"  >
                                         <span 
                                            class="fa fa-flag" 
                                            style="font-size:  5em; color: green;">
                                         </span>
                                     </a>      
-                                    <a href="#" title="Anulada"  v-if="ordenTrabajo.Estado == 'Anulado'">
+                                    <a href="#" title="Anulada"  >
                                         <span 
                                            class="fa fa-times-circle" 
                                            style="font-size:  5em; color: red;">
