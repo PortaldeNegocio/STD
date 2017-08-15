@@ -6,7 +6,8 @@ new Vue({
 	data: {
 		id: 3,
 		solicitudEstudio: '',
-		currentPage: ''
+		currentPage: '',
+		haveNewOrdenTrabajo: false,
 	},
 	methods: {
 		findSolicitudEstudio: function(param){
@@ -37,6 +38,7 @@ new Vue({
 				trabajo_campo:''
 			};
 			this.solicitudEstudio.ordenes_trabajo.push(ordenTrabajo);
+			this.haveNewOrdenTrabajo = true;
 			this.currentPage="#collapseOrdenTrabajo0";
 		}
 
