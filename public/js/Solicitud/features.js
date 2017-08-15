@@ -8,7 +8,7 @@ new Vue({
 		searchKey: '',
 		selectedTab: "En Desarrollo",
 		currentPage: 0,
-        itemsPerPage: 5,
+        itemsPerPage: 10,
         resultCount: 0,
 		solicitudEstudios: [],
 	},
