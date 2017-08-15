@@ -102,33 +102,50 @@
             <!-- content-header has breadcrumbs -->
 
             <section class="content-header">               
-                <h1>
-                    Solicitud Estudio
-                    <small>@{{solicitudEstudio.Descripcion}}</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li class="active">User Dashboard</li>
-                </ol>
+                <div class="content-header__left sinpadding col-md-6">
+                  <h1>
+                      Solicitud Estudio
+                      {{-- <small>@{{solicitudEstudio.Descripcion}}</small> --}}
+                  </h1>
+                  <div class="content-header__icono">
+                    <a  href="#" class="content-header__icono__item" data-toggle="tooltip" data-placement="top" title="Editar Solicitud de Estudio">
+                      <span class="fa fa-pencil"></span>
+                    </a>
+                    <a href="#" class="content-header__icono__item" data-toggle="tooltip" data-placement="top" title="Eliminar Solicitud de Estudio">
+                      <span class="fa fa-times"></span>
+                    </a>
+                  </div>
+                </div>
+               <div class="content-header__right col-md-6">
+                  <ol class="breadcrumb">
+                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+                     <li class="active">User Dashboard</li>
+                 </ol>
+               </div>
             </section>
+            <div class="clearfix"></div>
 
             <!-- end content-header section -->
+
+            <section class="content__title">
+                <h2>Nombre del Cliente / Nombre de la Obra</h2>
+            </section>           
 
             <!-- content -->
 
             <section class="content">
-                <h3>
-                    Ordenes de trabajo
-                    <small>Descripccion de la soliciutd</small>
-                </h3>
-                <a 
-                    id="btnNewOrdenTrabajo" 
-                    class="headgrid__enlace leer-mas" 
-                    style="margin-bottom: 7px;" 
-                    href="#"
-                    v-on:click.prevent="newOrdenTrabajo()">
-                    <span class="icon-plus-square"></span> Nuevo
-                </a>
+               <div class="content__head">
+                  <h3>
+                     Ordenes de trabajo                    
+                 </h3>
+                 <button
+                     id="btnNewOrdenTrabajo" 
+                     class="headgrid__enlace btn leer-mas disabled" 
+                     style="margin-bottom: 7px;"                      
+                     v-on:click.prevent="newOrdenTrabajo()">
+                     <span class="icon-plus-square"></span> Nuevo
+                 </button>
+               </div>
             
                 <!-- Your Page Content Here -->
                  <div id="pageContent">
