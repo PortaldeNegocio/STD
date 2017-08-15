@@ -104,6 +104,7 @@
             <section class="content-header">               
                 <h1>
                     Solicitud Estudio
+                    <small>@{{solicitudEstudio.Descripcion}}</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
@@ -120,255 +121,304 @@
                     Ordenes de trabajo
                     <small>Descripccion de la soliciutd</small>
                 </h3>
-
+                <a 
+                    id="btnNewOrdenTrabajo" 
+                    class="headgrid__enlace leer-mas" 
+                    style="margin-bottom: 7px;" 
+                    href="#"
+                    v-on:click.prevent="newOrdenTrabajo()">
+                    <span class="icon-plus-square"></span> Nuevo
+                </a>
+            
                 <!-- Your Page Content Here -->
                  <div id="pageContent">
                    <div class="row panel-group" v-for="ordenTrabajo in solicitudEstudio.ordenes_trabajo">
                        <div class="col-xs-12">             
-                           <ul id="ulSteps" class="steps steps-4">
-                               <li v-bind:class="[ordenTrabajo && !ordenTrabajo.trabajo_campo ? 'current': '']">
+                            <ul id="ulSteps" class="steps steps-4">
+                                <li v-if="ordenTrabajo" 
+                                    v-bind:class="[!ordenTrabajo.trabajo_campo ? 'current': '']">
                                    <a 
-                                        v-bind:href="'#collapseOrdenTrabajo' + ordenTrabajo.id "
+                                        v-bind:href="'#collapseOrdenTrabajo' + ordenTrabajo.id"
                                         v-on:click.prevent="selectTab('#collapseOrdenTrabajo' + ordenTrabajo.id)"
                                         data-toggle="collapse" 
                                         title="Orden de Trabajo">
                                        <em>Orden de Trabajo:</em>
-                                       <span v-if="ordenTrabajo">@{{ordenTrabajo.Descripcion}}</span>
+                                       <span>@{{ordenTrabajo.Descripcion}}</span>
                                    </a>
-                               </li>
-                            
-                               <li 
-                                    v-bind:class="[ordenTrabajo.trabajo_campo 
-                                        && ordenTrabajo.trabajo_campo.trabajos_laboratorio.length === 0 ? 'current': '']">
+                                </li>
+                                <li v-else>
+                                   <a title="Orden de Trabajo">
+                                       <em>Orden de Trabajo:</em>
+                                   </a>
+                                </li>
+
+                                <li v-if="ordenTrabajo.trabajo_campo" 
+                                    v-bind:class="[ordenTrabajo.trabajo_campo.trabajos_laboratorio && ordenTrabajo.trabajo_campo.trabajos_laboratorio.length == 0 ? 'current': '']">
                                    <a
-                                       v-bind:href="'#collapseTrabajoCampo'+ordenTrabajo.trabajo_campo.id" 
-                                        v-on:click.prevent="selectTab('#collapseTrabajoCampo'+ordenTrabajo.trabajo_campo.id)"
+                                       v-bind:href="'#collapseTrabajoCampo'+ordenTrabajo.trabajo_campo.orden_trabajo_id" 
+                                        v-on:click.prevent="selectTab('#collapseTrabajoCampo'+ordenTrabajo.trabajo_campo.orden_trabajo_id)"
                                        data-toggle="collapse" 
                                        title="Trabajo de Campo">
                                        <em>Trabajo de Campo:</em>
-                                       <span v-if="ordenTrabajo.trabajo_campo">@{{ordenTrabajo.trabajo_campo.Observacion}}</span>
+                                       <span>@{{ordenTrabajo.trabajo_campo.Observacion}}</span>
                                    </a>
-                               </li>
-               
-                               <li 
-                                    v-bind:class="[ordenTrabajo.trabajo_campo.trabajos_laboratorio.length !== 0
-                                        && !ordenTrabajo.InformeFinal ? 'current': '']">
+                                </li>
+                                <li v-else>
+                                    <a
+                                       title="Trabajo de Campo">
+                                       <em>Trabajo de Campo:</em>
+                                   </a>
+                                </li>
+                   
+                                <li v-if="ordenTrabajo.trabajo_campo.trabajos_laboratorio && ordenTrabajo.trabajo_campo.trabajos_laboratorio.length != 0" 
+                                    v-bind:class="[!ordenTrabajo.InformeFinal ? 'current': '']">
                                    <a 
-                                       v-bind:href="'#collapseTrabajoLaboratorio' +ordenTrabajo.trabajo_campo.trabajos_laboratorio.id" 
+                                       v-bind:href="'#collapseTrabajoLaboratorio' +ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].id" 
+                                        v-on:click.prevent="selectTab('#collapseTrabajoLaboratorio' +ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].id)"
                                        data-toggle="collapse" 
                                        title="Trabajo de Laboratorio">
                                        <em>Trabajo de Laboratorio:</em>
-                                       <span v-if="ordenTrabajo.trabajo_campo.trabajos_laboratorio.length !== 0">@{{ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].DescripcionMuestra}}</span>
+                                       <span>@{{ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].DescripcionMuestra}}</span>
                                    </a>
-                               </li>
-               
-                              <li v-bind:class="[ordenTrabajo.Estado == 'Finalizado' ? 'current' :'']">
-                 <a 
-                     href="#collapseInformeFinal"
-                     data-toggle="collapse" 
-                     title="Informe Final">
-                     <em>Informe Final:</em>
-                 </a>
-             </li>
-                               <div class="box-tools  pull-right">
-                                   <a href="#" title="Finalizada"  v-if="ordenTrabajo.Estado == 'Finalizado'">
-                                       <span 
+                                </li>
+                                <li v-else>
+                                   <a 
+                                       title="Trabajo de Laboratorio">
+                                       <em>Trabajo de Laboratorio:</em>
+                                   </a>
+                                </li>  
+                                     
+                                <li v-bind:class="[ordenTrabajo.Estado == 'Finalizado' ? 'current' :'']">
+                                    <a 
+                                        href="#collapseInformeFinal"
+                                        data-toggle="collapse" 
+                                        title="Informe Final">
+                                        <em>Informe Final:</em>
+                                    </a>
+                                </li>
+
+                                <div class="box-tools  pull-right">
+                                    <a href="#" title="Finalizada"  v-if="ordenTrabajo.Estado == 'Finalizado'">
+                                        <span 
                                            class="fa fa-flag" 
                                            style="font-size:  5em; color: green;">
-                                       </span>
-                                   </a>      
-                                   <a href="#" title="Anulada"  v-if="ordenTrabajo.Estado == 'Anulado'">
-                                       <span 
+                                        </span>
+                                    </a>      
+                                    <a href="#" title="Anulada"  v-if="ordenTrabajo.Estado == 'Anulado'">
+                                        <span 
                                            class="fa fa-times-circle" 
                                            style="font-size:  5em; color: red;">
-                                       </span>
-                                   </a>
-                               </div>
-                           </ul>
+                                        </span>
+                                    </a>
+                                </div>
+                            </ul>
                
+                            <div 
+                              v-bind:id="'#collapseOrdenTrabajo' + ordenTrabajo.id "
+                              class="unique-collapse collapse box" 
+                              v-bind:class="[currentPage == '#collapseOrdenTrabajo' + ordenTrabajo.id  ? 'in': '']"
+                              aria-expanded="true"> 
+                                <div class="row">  
+                                    <div class="col-xs-7">
+                                        <div class="form-group">
+                                            {!! Form::label('Descripccion', 'Descripcción:') !!}    
+                                            {!! Form::text('Descripccion', null, 
+                                                [
+                                                    'id'          => 'OrdenTrabajo_Descripccion',
+                                                    'class'       => 'form-control', 
+                                                    'placeholder' => 'Descripccion',
+                                                    'v-model'     => 'ordenTrabajo.Descripcion',
+                                                    'required'
+                                                ]) !!}
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::label('Fecha', 'Fecha:') !!}    
+                                            {!! Form::text('Fecha', null, 
+                                                [
+                                                    'id'          => 'OrdenTrabajo_Fecha',
+                                                    'class'       => 'form-control', 
+                                                    'placeholder' => 'Fecha',
+                                                    'v-model'     => 'ordenTrabajo.Fecha',
+                                                    'required'
+                                                ]) !!}
+                                        </div>                                
+                                        <div class="form-group">
+                                            {!! Form::label('Autorizado', 'Autorizado:') !!}    
+                                            {!! Form::text('Autorizado', null, 
+                                                [
+                                                    'id'          => 'OrdenTrabajo_Autorizado',
+                                                    'class'       => 'form-control', 
+                                                    'placeholder' => 'Autorizado',
+                                                    'v-model'     => 'ordenTrabajo.Autorizado',
+                                                    'required'
+                                            ]) !!}
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            {!! Form::label('Responsable', 'Responsable:') !!}    
+                                            {!! Form::text('Responsable', null, 
+                                                [
+                                                    'id'          => 'OrdenTrabajo_Responsable',
+                                                    'class'       => 'form-control', 
+                                                    'placeholder' => 'Responsable',
+                                                    'v-model'     => 'ordenTrabajo.Responsable',
+                                                    'required'
+                                                ]) !!}
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::label('Observacion', 'Observación:') !!}    
+                                            {!! Form::text('Observacion', null, 
+                                                [
+                                                    'id'          => 'OrdenTrabajo_Observacion',
+                                                    'class'       => 'form-control', 
+                                                    'placeholder' => 'Observacion',
+                                                    'v-model'     => 'ordenTrabajo.Observacion',
+                                                    'required'
+                                                ]) !!}
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::label('Extras', 'Extras:') !!}    
+                                            {!! Form::text('Extras', null, 
+                                                [
+                                                    'id'          => 'OrdenTrabajo_Extras',
+                                                    'class'       => 'form-control', 
+                                                    'placeholder' => 'Extras',
+                                                    'v-model'     => 'ordenTrabajo.Extras',
+                                                    'required'
+                                              ]) !!}
+                                        </div>
+                                    </div>
 
-                        <div 
-                      class="unique-collapse collapse box" 
-                      v-bind:id="'#collapseOrdenTrabajo' + ordenTrabajo.id "
-                      v-bind:class="[currentPage == '#collapseOrdenTrabajo' + ordenTrabajo.id  ? 'in': '']"
-                      aria-expanded="true" 
-
-                      style=""> 
-                      <div class="row">  
-                          <div class="col-xs-7">
-                              <div class="form-group">
-                                  {!! Form::label('Descripccion', 'Descripcción:') !!}    
-                                  {!! Form::text('Descripccion', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Descripccion',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Descripccion',
-                                          'v-model'     => 'ordenTrabajo.Descripcion',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                              <div class="form-group">
-                                  {!! Form::label('Fecha', 'Fecha:') !!}    
-                                  {!! Form::text('Fecha', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Fecha',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Fecha',
-                                          'required'
-                                  ]) !!}
-                              </div>                                
-                              <div class="form-group">
-                                  {!! Form::label('Responsable', 'Responsable:') !!}    
-                                  {!! Form::text('Responsable', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Responsable',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Responsable',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                              <div class="form-group">
-                                  {!! Form::label('Observacion', 'Observación:') !!}    
-                                  {!! Form::text('Observacion', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Observacion',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Observacion',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                              <div class="form-group">
-                                  {!! Form::label('Extras', 'Extras:') !!}    
-                                  {!! Form::text('Extras', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Extras',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Extras',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                          </div>
-                          <div class="col-offset-1 col-xs-4">
-                              <img src="..." alt="..." class="img-thumbnail">
-                          </div>
-                      </div>
-                      <div class="row">      
-                          <div>
-                              <button class="btn btn-primary form-group" type="submit">Cancelar</button>
-                              <button class="btn btn-primary form-group" type="submit">Imprimir</button>
-                              <button class="btn btn-primary form-group" type="submit">Guardar</button><button class="btn btn-primary form-group" type="submit">Crear Trabajo de Campo</button>             
-                          </div>
-                      </div>  
-                  </div>
-              <!--                     
-                  <div 
-                      class="unique-collapse collapse box" 
-                      id="collapseTrabajoCampo{ordenTrabajo.TrabajoCampo.id}" 
-                      aria-expanded="true" 
-                      style=""> 
-                      <div class="row">  
-                          <div class="col-xs-7">
-                              <div class="form-group">
-                                  {!! Form::label('EquiposUtilizados', 'Equipos Utilizados:') !!}    
-                                  {!! Form::text('EquiposUtilizados', null, 
-                                      [
-                                          'id'          => 'EquiposUtilizados',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Equipos utilizados',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                              <div class="form-group">
-                                  {!! Form::label('Operadores', 'Operadores:') !!}    
-                                  {!! Form::text('Operadores', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Operadores',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Operadores',
-                                          'required'
-                                  ]) !!}
-                              </div>                                
-                              <div class="form-group">
-                                  {!! Form::label('HoraEntrada', 'HOraEntrada:') !!}    
-                                  {!! Form::text('HoraEntrada', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_HoraEntrada',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'HoraEntrada',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                              <div class="form-group">
-                                  {!! Form::label('Observacion', 'Observación:') !!}    
-                                  {!! Form::text('Observacion', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Observacion',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Observacion',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">      
-                          <div>
-                              <button class="btn btn-primary form-group" type="submit">Cancelar</button>
-                              <button class="btn btn-primary form-group" type="submit">Guardar</button><button class="btn btn-primary form-group" type="submit">Crear Trabajo de Laboratorio</button>             
-                          </div>
-                      </div>  
-                  </div>
-                                 
-                  <div 
-                      class="unique-collapse collapse box" 
-                      id="collapseTrabajoLaboratorio{ordenTrabajo.TrabajoCampo.TrabajoLaboratorio.id}" 
-                      aria-expanded="true" 
-                      style=""> 
-                      <div class="row">  
-                          <div class="col-xs-7">
-                              <div class="form-group">
-                                  {!! Form::label('Descripccion', 'Descripcción:') !!}    
-                                  {!! Form::text('Descripccion', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Operadores',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Descripccion',
-                                          'required'
-                                  ]) !!}
-                              </div>                                
-                              <div class="form-group">
-                                  {!! Form::label('HoraEntrada', 'HoraEntrada:') !!}    
-                                  {!! Form::text('HoraEntrada', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_HoraEntrada',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'HoraEntrada',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                              <div class="form-group">
-                                  {!! Form::label('Observacion', 'Observación:') !!}    
-                                  {!! Form::text('Observacion', null, 
-                                      [
-                                          'id'          => 'OrdenTrabajo_Observacion',
-                                          'class'       => 'form-control', 
-                                          'placeholder' => 'Observacion',
-                                          'required'
-                                  ]) !!}
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">      
-                          <div>
-                              <button class="btn btn-primary form-group" type="submit">Cancelar</button>
-                              <button class="btn btn-primary form-group" type="submit">Guardar</button><button class="btn btn-primary form-group" type="submit">Finalizar</button>             
-                          </div>
-                      </div>  
-                  </div> -->
+                                    <div class="col-offset-1 col-xs-4">
+                                        <img src="#" alt="" class="img-thumbnail">
+                                    </div>
+                                </div>
+                                <div class="row">      
+                                    <div>
+                                        <button class="btn btn-primary form-group" type="submit">Cancelar</button>
+                                        <button class="btn btn-primary form-group" type="submit">Imprimir</button>
+                                        <button class="btn btn-primary form-group" type="submit">Guardar</button><button class="btn btn-primary form-group" type="submit">Crear Trabajo de Campo</button>             
+                                    </div>
+                                </div>  
+                            </div>
+                                  
+                            <div 
+                                v-if="ordenTrabajo.trabajo_campo" 
+                                v-bind:id="'#collapseTrabajoCampo' + ordenTrabajo.trabajo_campo.orden_trabajo_id "
+                                class="unique-collapse collapse box" 
+                                v-bind:class="[currentPage == '#collapseTrabajoCampo' + ordenTrabajo.trabajo_campo.orden_trabajo_id  ? 'in': '']"
+                                aria-expanded="true">     
+                                <div class="row">  
+                                    <div class="col-xs-7">
+                                        <div class="form-group">
+                                            {!! Form::label('EquiposUtilizados', 'Equipos Utilizados:') !!}    
+                                            {!! Form::text('EquiposUtilizados', null, 
+                                                [
+                                                  'id'          => 'EquiposUtilizados',
+                                                  'class'       => 'form-control', 
+                                                  'placeholder' => 'Equipos utilizados',
+                                                  'v-model'     => 'ordenTrabajo.trabajo_campo.EquiposUtilizados',
+                                                  'required'
+                                                ]) !!}
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::label('Operadores', 'Operadores:') !!}    
+                                            {!! Form::text('Operadores', null, 
+                                                [
+                                                  'id'          => 'OrdenTrabajo_Operadores',
+                                                  'class'       => 'form-control', 
+                                                  'placeholder' => 'Operadores',
+                                                  'v-model'     => 'ordenTrabajo.trabajo_campo.Operadores',
+                                                  'required'
+                                                ]) !!}
+                                        </div>                                
+                                        <div class="form-group">
+                                            {!! Form::label('HoraEntrada', 'HOraEntrada:') !!}    
+                                            {!! Form::text('HoraEntrada', null, 
+                                                [
+                                                  'id'          => 'OrdenTrabajo_HoraEntrada',
+                                                  'class'       => 'form-control', 
+                                                  'placeholder' => 'HoraEntrada',
+                                                  'v-model'     => 'ordenTrabajo.trabajo_campo.HoraEntrada',
+                                                  'required'
+                                                ]) !!}
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::label('Observacion', 'Observación:') !!}    
+                                            {!! Form::text('Observacion', null, 
+                                                [
+                                                  'id'          => 'OrdenTrabajo_Observacion',
+                                                  'class'       => 'form-control', 
+                                                  'placeholder' => 'Observacion',
+                                                  'v-model'     => 'ordenTrabajo.trabajo_campo.Observacion',
+                                                  'required'
+                                                ]) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">      
+                                    <div>
+                                        <button class="btn btn-primary form-group" type="submit">Cancelar</button>
+                                        <button class="btn btn-primary form-group" type="submit">Guardar</button><button class="btn btn-primary form-group" type="submit">Crear Trabajo de Laboratorio</button>             
+                                    </div>
+                                </div>  
+                            </div>
+              
+                            <div 
+                                v-if="ordenTrabajo.trabajo_campo.trabajos_laboratorio && ordenTrabajo.trabajo_campo.trabajos_laboratorio.length != 0" 
+                                v-bind:id="'#collapseTrabajoLaboratorio' +ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].id" 
+                                class="unique-collapse collapse box" 
+                                v-bind:class="[currentPage == '#collapseTrabajoLaboratorio' +ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].id ? 'in': '']"
+                                aria-expanded="true"> 
+                                <div class="row">  
+                                    <div class="col-xs-7">
+                                        <div class="form-group">
+                                            {!! Form::label('Descripccion', 'Descripcción:') !!}    
+                                            {!! Form::text('Descripccion', null, 
+                                                [
+                                                  'id'          => 'trabajosLaboratorio_Descripcion',
+                                                  'class'       => 'form-control', 
+                                                  'placeholder' => 'Descripccion',
+                                                  'v-model'     => 'ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].Descripccion',
+                                                  'required'
+                                                ]) !!}
+                                        </div>                                
+                                        <div class="form-group">
+                                            {!! Form::label('HoraEntrada', 'HoraEntrada:') !!}    
+                                            {!! Form::text('HoraEntrada', null, 
+                                                [
+                                                    'id'          => 'TrabajoLaboratorio_HoraEntrada',
+                                                    'class'       => 'form-control', 
+                                                    'placeholder' => 'HoraEntrada',
+                                                    'v-model'     => 'ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].HoraEntrada',
+                                                    'required'
+                                                ]) !!}
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::label('Observacion', 'Observación:') !!}    
+                                            {!! Form::text('Observacion', null, 
+                                                [
+                                                    'id'          => 'TrabajoLaboratorio_ObservacionesTrabajo',
+                                                    'class'       => 'form-control', 
+                                                    'placeholder' => 'Observacion',
+                                                    'v-model'     => 'ordenTrabajo.trabajo_campo.trabajos_laboratorio[0].ObservacionesTrabajo',
+                                                    'required'
+                                                ]) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">      
+                                    <div>
+                                        <button class="btn btn-primary form-group" type="submit">Cancelar</button>
+                                        <button class="btn btn-primary form-group" type="submit">Guardar</button><button class="btn btn-primary form-group" type="submit">Finalizar</button>             
+                                    </div>
+                                </div>  
+                            </div>
                
                        </div>
                    </div>  
 
-                    <pre> @{{ $data }}  </pre>              
+               <!--     <pre> @{{ $data }}  </pre>        -->
                </div>
 
                 <div class="row" style="margin: 10px 0px 0px 0px">
