@@ -34,7 +34,16 @@
         <!-- v-bind: => crea un enlace al atributo htm, ejm. class or style -->
 
 		<div id="tabs"  >
-			<div>
+			<div class="col-sm-4">
+				<select class="form-control" v-model="itemsPerPage">
+				  <option value="10">10</option>
+				  <option value="25">25</option>
+				  <option value="50">50</option>
+				  <option value="100">100</option>				  
+				</select>
+			</div>
+
+			<div class="col-sm-offset-4 col-sm-4">
 				<input type="text" placeholder="Buscar" class="form-control" v-model="searchKey">	
 			</div>
 
@@ -142,7 +151,12 @@
   			</div>
 
   			<div>
-  				<ul>
+  				<ul class="pagination">
+  					<li>
+				      <a href="#" aria-label="Previous" v-on:click.prevent="currentPage = currentPage - 1">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
 				    <li 
 				    	v-for="pageNumber in totalPages" 
 				    	v-if="Math.abs(pageNumber - currentPage) < 3 || pageNumber == totalPages - 1 || pageNumber == 0">
@@ -151,12 +165,17 @@
 				    		:class="{current: currentPage === pageNumber, last: (pageNumber == totalPages - 1 && Math.abs(pageNumber - currentPage) > 3), first:(pageNumber == 0 && Math.abs(pageNumber - currentPage) > 3)}">
 				    			@{{ pageNumber +1 }}</a>
 				    </li>
+				    <li>
+				      <a href="#" aria-label="Next" v-on:click.prevent="currentPage = currentPage + 1">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
 				</ul>
   			</div>
-<!-- 
+
 			<div>
 				<pre> @{{ $data }}	</pre>	</div>
-			</div> -->
+			</div>
  
     </section>
     <!-- end content section -->
