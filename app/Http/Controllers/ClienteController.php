@@ -224,4 +224,9 @@ class ClienteController extends Controller
                 ]);
         }
     }
+
+    public function getAllCustomer()
+    {
+        return Cliente::all();
+    }
 }

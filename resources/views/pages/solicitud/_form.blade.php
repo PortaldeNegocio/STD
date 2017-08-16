@@ -54,13 +54,10 @@
 							'placeholder' => 'Número Documento',
 							'required'
 						])!!}
-				{!!Form::text('cliente_Nombres',$solicitud->exists ? $solicitud->cliente->Apellido .' '. $solicitud->cliente->Nombre: null,
-						[
-							'id'		  => 'cliente_Nombres',
-							'class'       => 'form-control', 
-							'placeholder' => 'Nombres',
-							'required'
-						])!!}
+	 			<multiselect 
+	 				v-model="selectedCliente" 
+	 				:options="allClientes" 
+	 				:custom-label="customLabel"></multiselect>
 			</div>
 
 			<div class="form-group">
@@ -165,6 +162,10 @@
 
 
 			</div>
+<!-- 
+			<div>
+				<pre> @{{ $data }}	</pre>	</div> 
+			</div> -->
 				
 			<!-- <div>
 			  	<a href="#" class="btn-guardar  btn-primary">

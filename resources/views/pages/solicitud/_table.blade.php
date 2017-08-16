@@ -172,10 +172,10 @@
 				    </li>
 				</ul>
   			</div>
-
+<!-- 
 			<div>
-				<pre> @{{ $data }}	</pre>	</div>
-			</div>
+				<pre> @{{ $data }}	</pre>	</div> 
+			</div> -->
  
     </section>
     <!-- end content section -->

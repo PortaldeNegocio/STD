@@ -12,6 +12,8 @@
 
 // Cliente page route
 Route::resource('cliente', 'ClienteController');
+Route::get('getAllCustomer', 'ClienteController@getAllCustomer')->name('getAllCustomer');
+
 
 Route::delete('/destroyByAjax/{id}', 'ClienteController@destroyByAjax')->name('destroyByAjax');
 
