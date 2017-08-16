@@ -4,7 +4,7 @@ new Vue({
 		this.findSolicitudEstudio(this.id);
 	},
 	data: {
-		id: 3,
+		id: 6,
 		solicitudEstudio: '',
 		currentPage: '',
 		haveNewOrdenTrabajo: false,

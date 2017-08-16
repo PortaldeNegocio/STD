@@ -151,6 +151,28 @@ ul.paginacion {
 .content {
   padding-top: 0; }
 
+.division {
+  width: 100%;
+  height: 1px;
+  background: #757575;
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.primary {
+  background: #286090; }
+
+.cinfo {
+  background: #31B0D5; }
+
+.warning {
+  background: #EC971F; }
+
+.success {
+  background: #449D44; }
+
+.danger {
+  background: #C9302C; }
+
 .menu_activo {
   color: white !important; }
 
@@ -211,7 +233,8 @@ ul.paginacion {
   padding-left: 15px; }
   .content__title h2 {
     font-size: 20px;
-    color: #757575; }
+    color: #757575;
+    margin-top: 0; }
 
 .content__head h3 {
   font-size: 22px;
@@ -220,6 +243,205 @@ ul.paginacion {
 .content__head .headgrid__enlace {
   display: inline-block;
   margin-left: 20px; }
+
+.steps {
+  /* margin: 40px; */
+  margin: 10px 0px 2px 0px;
+  padding: 0;
+  overflow: hidden; }
+
+.steps a {
+  color: white;
+  text-decoration: none; }
+
+.steps em {
+  display: block;
+  font-size: 1.1em;
+  font-weight: bold; }
+
+.steps li {
+  float: left;
+  margin-left: 0;
+  width: 200px;
+  /* 100 / number of steps */
+  height: 70px;
+  /* total height */
+  list-style-type: none;
+  padding: 5px 5px 5px 30px;
+  /* padding around text, last should include arrow width */
+  border-right: 3px solid white;
+  /* width: gap between arrows, color: background of document */
+  position: relative; }
+  @media (min-width: 992px) {
+    .steps li {
+      width: 20%; } }
+
+.steps li a {
+  width: 100%;
+  height: 100%;
+  display: block; }
+
+/* remove extra padding on the first object since it doesn't have an arrow to the left */
+.steps li:first-child {
+  padding-left: 5px; }
+
+/* white arrow to the left to "erase" background (starting from the 2nd object) */
+.steps li:nth-child(n+2)::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-left: 25px solid white;
+  /* width: arrow width, color: background of document */
+  border-top: 35px solid transparent;
+  /* width: half height */
+  border-bottom: 35px solid transparent;
+  /* width: half height */
+  width: 0;
+  height: 0;
+  content: " "; }
+
+/* colored arrow to the right */
+.steps li::after {
+  z-index: 1;
+  /* need to bring this above the next item */
+  position: absolute;
+  top: 0;
+  right: -25px;
+  /* arrow width (negated) */
+  display: block;
+  border-left: 25px solid #7c8437;
+  /* width: arrow width */
+  border-top: 35px solid transparent;
+  /* width: half height */
+  border-bottom: 35px solid transparent;
+  /* width: half height */
+  width: 0;
+  height: 0;
+  content: " "; }
+
+/* Setup colors (both the background and the arrow) */
+/* Completed */
+.steps li {
+  background-color: #7C8437; }
+
+.steps li.orden-trabajo {
+  background-color: #EC971F; }
+
+.steps li.orden-trabajo::after {
+  border-left-color: #EC971F; }
+
+.steps li.orden-trabajo:hover {
+  background-color: #d18112; }
+
+.steps li.orden-trabajo:hover::after {
+  border-left-color: #d18112; }
+
+.steps li.trabajo-campo {
+  background-color: #0E6185; }
+
+.steps li.trabajo-campo::after {
+  border-left-color: #0E6185; }
+
+.steps li.trabajo-campo:hover {
+  background-color: #0a4660; }
+
+.steps li.trabajo-campo:hover::after {
+  border-left-color: #0a4660; }
+
+.steps li.trabajos-laboratorio {
+  background-color: #31B0D5; }
+
+.steps li.trabajos-laboratorio::after {
+  border-left-color: #31B0D5; }
+
+.steps li.trabajos-laboratorio:hover {
+  background-color: #2597b8; }
+
+.steps li.trabajos-laboratorio:hover::after {
+  border-left-color: #2597b8; }
+
+.steps li.trabajos-finalizado {
+  background-color: #00CA67; }
+
+.steps li.trabajos-finalizado::after {
+  border-left-color: #00CA67; }
+
+.steps li.trabajos-finalizado:hover {
+  background-color: #00a152; }
+
+.steps li.trabajos-finalizado:hover::after {
+  border-left-color: #00a152; }
+
+.steps li::after {
+  border-left-color: #7c8437; }
+
+/* Current */
+.steps li.current {
+  background-color: #C36615; }
+
+.steps li.current::after {
+  border-left-color: #C36615; }
+
+/* Following */
+.steps li.current ~ li {
+  background-color: #bcbcbc; }
+
+.steps li.current ~ li::after {
+  border-left-color: #bcbcbc; }
+
+/* Hover for completed and current */
+/*.steps li:hover {background-color: #C36615}
+.steps li:hover::after {border-left-color: #C36615} */
+.box-tools {
+  display: inline-block;
+  margin-left: 5%;
+  margin-top: 5px; }
+
+.form-solicitud {
+  margin-top: 20px;
+  padding-bottom: 10px; }
+
+.contenedor-up {
+  position: relative; }
+  .contenedor-up:hover a {
+    opacity: 1; }
+  .contenedor-up__enlace {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    width: 80px;
+    height: 50px;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    font-size: 32px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s;
+    -o-transition: opacity 0.35s;
+    transition: opacity 0.35s; }
+
+.accion-solicitud {
+  margin-top: 5px;
+  padding-bottom: 30px;
+  text-align: center; }
+  .accion-solicitud button {
+    margin-top: 10px; }
+  @media (min-width: 768px) {
+    .accion-solicitud__left button {
+      float: left;
+      margin-right: 5px; } }
+  @media (min-width: 768px) {
+    .accion-solicitud__right button {
+      float: right;
+      margin-left: 5px; } }
+
+.solicitud-footer {
+  margin-top: 25px;
+  margin-bottom: 25px; }
+  .solicitud-footer .leer-mas {
+    font-size: 18px; }
 
 .btntabla, .formaccion {
   display: inline-block; }
